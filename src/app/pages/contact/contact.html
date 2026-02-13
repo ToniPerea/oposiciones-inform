@@ -1,0 +1,239 @@
+<!-- Hero Section -->
+<app-hero
+  title="Contacto"
+  subtitle="Estamos aqui para ayudarte. Contactanos y resolvemos todas tus dudas."
+/>
+
+<!-- Contact Form + Info Section -->
+<section class="bg-white py-16 md:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+
+      <!-- Left Column - Contact Form -->
+      <div>
+        <h2 class="font-heading text-3xl font-bold text-gray-900">Enviar Mensaje</h2>
+
+        <!-- Success Message -->
+        @if (submitted()) {
+          <div class="mt-6 flex items-start gap-3 rounded-lg bg-green-50 p-4 text-green-800">
+            <svg class="h-6 w-6 shrink-0 text-green-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="text-sm font-medium">
+              Mensaje enviado correctamente. Nos pondremos en contacto contigo lo antes posible.
+            </p>
+          </div>
+        }
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+
+          <!-- Nombre completo -->
+          <div>
+            <label for="nombre" class="mb-1 block text-sm font-medium text-gray-700">Nombre completo</label>
+            <input
+              id="nombre"
+              type="text"
+              formControlName="nombre"
+              placeholder="Tu nombre completo"
+              class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:outline-none"
+            />
+            @if (contactForm.get('nombre')?.touched && contactForm.get('nombre')?.invalid) {
+              <div class="mt-1 text-sm text-red-500">
+                @if (contactForm.get('nombre')?.errors?.['required']) {
+                  <p>El nombre es obligatorio.</p>
+                }
+                @if (contactForm.get('nombre')?.errors?.['minlength']) {
+                  <p>El nombre debe tener al menos 2 caracteres.</p>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Correo electronico -->
+          <div>
+            <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Correo electronico</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="tu@email.com"
+              class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:outline-none"
+            />
+            @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
+              <div class="mt-1 text-sm text-red-500">
+                @if (contactForm.get('email')?.errors?.['required']) {
+                  <p>El correo electronico es obligatorio.</p>
+                }
+                @if (contactForm.get('email')?.errors?.['email']) {
+                  <p>Introduce un correo electronico valido.</p>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Telefono -->
+          <div>
+            <label for="telefono" class="mb-1 block text-sm font-medium text-gray-700">Telefono</label>
+            <input
+              id="telefono"
+              type="tel"
+              formControlName="telefono"
+              placeholder="+34 612 345 678"
+              class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:outline-none"
+            />
+            @if (contactForm.get('telefono')?.touched && contactForm.get('telefono')?.invalid) {
+              <div class="mt-1 text-sm text-red-500">
+                @if (contactForm.get('telefono')?.errors?.['pattern']) {
+                  <p>Introduce un numero de telefono espanol valido.</p>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Curso de interes -->
+          <div>
+            <label for="curso" class="mb-1 block text-sm font-medium text-gray-700">Curso de interes</label>
+            <select
+              id="curso"
+              formControlName="curso"
+              class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:outline-none"
+            >
+              <option value="">Selecciona un curso</option>
+              @for (curso of cursos; track curso) {
+                <option [value]="curso">{{ curso }}</option>
+              }
+            </select>
+          </div>
+
+          <!-- Mensaje -->
+          <div>
+            <label for="mensaje" class="mb-1 block text-sm font-medium text-gray-700">Mensaje</label>
+            <textarea
+              id="mensaje"
+              formControlName="mensaje"
+              rows="5"
+              placeholder="Escribe tu mensaje aqui..."
+              class="w-full resize-y rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:outline-none"
+            ></textarea>
+            @if (contactForm.get('mensaje')?.touched && contactForm.get('mensaje')?.invalid) {
+              <div class="mt-1 text-sm text-red-500">
+                @if (contactForm.get('mensaje')?.errors?.['required']) {
+                  <p>El mensaje es obligatorio.</p>
+                }
+                @if (contactForm.get('mensaje')?.errors?.['minlength']) {
+                  <p>El mensaje debe tener al menos 10 caracteres.</p>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            [disabled]="contactForm.invalid"
+            class="w-full rounded-lg bg-primary-600 py-3 text-lg font-semibold text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Enviar Mensaje
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column - Contact Info -->
+      <div class="space-y-8">
+
+        <!-- Contact Info Card -->
+        <div class="rounded-xl bg-gray-50 p-8">
+          <h3 class="font-heading text-2xl font-bold text-gray-900">Informacion de Contacto</h3>
+
+          <div class="mt-6 space-y-6">
+
+            <!-- Phone -->
+            <div class="flex items-start gap-4">
+              <div class="shrink-0">
+                <svg class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-500">Telefono</p>
+                <p class="mt-1 text-base font-semibold text-gray-900">+34 612 345 678</p>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-start gap-4">
+              <div class="shrink-0">
+                <svg class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-500">Correo electronico</p>
+                <p class="mt-1 text-base font-semibold text-gray-900">info&#64;academiaef.es</p>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="flex items-start gap-4">
+              <div class="shrink-0">
+                <svg class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-500">Direccion</p>
+                <p class="mt-1 text-base font-semibold text-gray-900">Calle de la Educacion 15, 28001 Madrid</p>
+              </div>
+            </div>
+
+            <!-- Schedule -->
+            <div class="flex items-start gap-4">
+              <div class="shrink-0">
+                <svg class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-500">Horario</p>
+                <p class="mt-1 text-base font-semibold text-gray-900">Lunes a Viernes: 9:00 - 20:00</p>
+                <p class="text-base font-semibold text-gray-900">Sabados: 10:00 - 14:00</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Google Maps Embed -->
+        <div class="overflow-hidden rounded-xl">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.223964709498!2d-3.7037902!3d40.4167754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42287d3e778a15%3A0x9d4b1e1e6d8b2e2a!2sMadrid%2C%20Spain!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
+            width="100%"
+            height="300"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicacion de Academia EF en Madrid"
+            class="w-full"
+          ></iframe>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WhatsApp Floating Button -->
+<a
+  href="https://wa.me/34612345678?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20preparaci%C3%B3n%20de%20oposiciones%20de%20Educaci%C3%B3n%20F%C3%ADsica."
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+  class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl"
+>
+  <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+  </svg>
+</a>

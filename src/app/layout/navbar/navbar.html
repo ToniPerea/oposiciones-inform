@@ -1,0 +1,91 @@
+<nav
+  [class]="
+    'w-full bg-white transition-shadow duration-300 ' +
+    (scrolled() ? 'shadow-md' : 'shadow-none')
+  "
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+
+      <!-- Logo -->
+      <a routerLink="/" class="font-heading text-xl font-bold text-primary-700 tracking-tight" (click)="closeMobileMenu()">
+        Academia EF
+      </a>
+
+      <!-- Desktop nav links -->
+      <div class="hidden md:flex md:items-center md:gap-1">
+        @for (link of navLinks; track link.path) {
+          <a
+            [routerLink]="link.path"
+            routerLinkActive="text-primary-600 border-b-2 border-primary-600"
+            [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+            class="px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-primary-600"
+          >
+            {{ link.label }}
+          </a>
+        }
+      </div>
+
+      <!-- Desktop CTA button -->
+      <div class="hidden md:block">
+        <a
+          routerLink="/contacto"
+          class="inline-flex items-center rounded-lg bg-primary-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+        >
+          Contactar
+        </a>
+      </div>
+
+      <!-- Mobile hamburger button -->
+      <button
+        type="button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 md:hidden"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-controls="mobile-menu"
+        aria-label="Abrir menu de navegacion"
+      >
+        <!-- Hamburger icon -->
+        @if (!mobileMenuOpen()) {
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        }
+        <!-- Close icon -->
+        @if (mobileMenuOpen()) {
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        }
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  @if (mobileMenuOpen()) {
+    <div id="mobile-menu" class="border-t border-gray-200 bg-white shadow-lg md:hidden">
+      <div class="space-y-1 px-4 pb-4 pt-2">
+        @for (link of navLinks; track link.path) {
+          <a
+            [routerLink]="link.path"
+            routerLinkActive="text-primary-600 bg-primary-50 border-l-4 border-primary-600"
+            [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-primary-600"
+            (click)="closeMobileMenu()"
+          >
+            {{ link.label }}
+          </a>
+        }
+        <div class="pt-2">
+          <a
+            routerLink="/contacto"
+            class="block w-full rounded-lg bg-primary-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-700"
+            (click)="closeMobileMenu()"
+          >
+            Contactar
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</nav>
