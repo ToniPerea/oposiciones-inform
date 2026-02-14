@@ -51,7 +51,7 @@ jobs:
 
       - name: Run tests
         if: ${{ inputs.run_tests }}
-        run: pnpm test -- --single-run --browsers=ChromeHeadless
+        run: pnpm test -- --no-watch --browsers=ChromeHeadless
 
       - name: Build Angular app
         run: pnpm ng build --base-href=/oposiciones-inform/
