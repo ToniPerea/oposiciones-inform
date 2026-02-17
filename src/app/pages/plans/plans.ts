@@ -93,7 +93,7 @@ export class Plans {
       icon: 'book',
       title: 'Temario Actualizado',
       description:
-        '69 temas revisados y actualizados con la legislacion vigente.',
+        '25 temas revisados y actualizados con la legislación vigente',
     },
     {
       icon: 'clipboard',
@@ -105,13 +105,61 @@ export class Plans {
       icon: 'document',
       title: 'Programacion Didactica',
       description:
-        'Guia completa para elaborar tu programacion y unidades didacticas.',
+        'Modelo de programacion didactica con correcciones personalizadas.',
     },
     {
       icon: 'microphone',
       title: 'Defensa Oral',
       description:
         'Simulacros de exposicion ante tribunal con feedback detallado.',
+    },
+    {
+      icon: 'audio',
+      title: 'Resumenes en Audio',
+      description:
+        'Audios de los temas para estudiar mientras te desplazas o haces deporte.',
+    },
+    {
+      icon: 'file',
+      title: 'Resumen de un Folio',
+      description:
+        'Cada tema resumido en una sola pagina para facilitar el repaso rapido.',
+    },
+    {
+      icon: 'cards',
+      title: 'Flashcards y Mapas Mentales',
+      description:
+        'Herramientas visuales interactivas para optimizar tu memorizacion.',
+    },
+    {
+      icon: 'chart',
+      title: 'Infografias Visuales',
+      description:
+        'Contenido visual de alta calidad para conceptos complejos y estadisticas.',
+    },
+    {
+      icon: 'exam',
+      title: 'Simulacros Mensuales',
+      description:
+        'Simulacro de examen y supuesto practico mensuales con correccion detallada.',
+    },
+    {
+      icon: 'location',
+      title: 'Sesiones Presenciales',
+      description:
+        'Clases presenciales en academia real ubicada en Cordoba.',
+    },
+    {
+      icon: 'computer',
+      title: 'Plataforma Digital',
+      description:
+        'Basada en Google Classroom de facil acceso desde cualquier dispositivo.',
+    },
+    {
+      icon: 'report',
+      title: 'Seguimiento Individualizado',
+      description:
+        'Informe personalizado de tu progreso y areas de mejora continua.',
     },
     {
       icon: 'scale',
