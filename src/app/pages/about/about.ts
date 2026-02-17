@@ -30,22 +30,22 @@ export class About {
   readonly values: Value[] = [
     {
       title: 'Excelencia',
-      description: 'Buscamos la maxima calidad en todo lo que hacemos.',
+      description: 'Buscamos la máxima calidad en todo lo que hacemos.',
     },
     {
       title: 'Compromiso',
-      description: 'Nos comprometemos con el exito de cada alumno.',
+      description: 'Nos comprometemos con el éxito de cada alumno.',
     },
     {
-      title: 'Innovacion',
-      description: 'Actualizamos constantemente nuestra metodologia.',
+      title: 'Innovación',
+      description: 'Actualizamos constantemente nuestra metodología.',
     },
   ];
 
   readonly steps: Step[] = [
     {
       number: 1,
-      title: 'Diagnostico Inicial',
+      title: 'Diagnóstico Inicial',
       description:
         'Evaluamos tu nivel de partida para personalizar tu plan de estudio.',
     },
@@ -53,19 +53,19 @@ export class About {
       number: 2,
       title: 'Plan Personalizado',
       description:
-        'Disenamos un itinerario adaptado a tu disponibilidad y objetivos.',
+        'Diseñamos un itinerario adaptado a tu disponibilidad y objetivos.',
     },
     {
       number: 3,
-      title: 'Preparacion Integral',
+      title: 'Preparación Integral',
       description:
-        'Temario, casos practicos, programacion didactica y defensa oral.',
+        'Temario, casos prácticos, programación didáctica y defensa oral.',
     },
     {
       number: 4,
       title: 'Simulacros y Seguimiento',
       description:
-        'Examenes tipo y feedback continuo hasta el dia de la oposicion.',
+        'Exámenes tipo y feedback continuo hasta el día de la oposición.',
     },
   ];
 
@@ -75,21 +75,21 @@ export class About {
       photo: 'assets/team/javier-murillo.jpeg',
       role: 'Profesor Digital',
       description:
-        'Doctor y Graduado en CAFYD. Profesor Universitario en Eduación Física.',
+        'Doctor y Graduado en CAFYD. Profesor Universitario en Educación Física.',
     },
     {
-      name: 'Laura Sanchez',
+      name: 'Laura Sánchez',
       initials: 'LS',
-      role: 'Preparadora de Casos Practicos',
+      role: 'Preparadora de Casos Prácticos',
       description:
-        'Licenciada en CAFYD y Maestra en Educacion Fisica. Especialista en supuestos practicos y programacion didactica.',
+        'Licenciada en CAFYD y Maestra en Educación Física. Especialista en supuestos prácticos y programación didáctica.',
     },
     {
       name: 'Miguel Torres',
       initials: 'MT',
       role: 'Preparador de Temario',
       description:
-        'Catedratico de Educacion Fisica. Autor de varios libros de referencia para la preparacion de oposiciones.',
+        'Catedrático de Educación Física. Autor de varios libros de referencia para la preparación de oposiciones.',
     },
   ];
 }

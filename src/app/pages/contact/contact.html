@@ -1,7 +1,7 @@
 <!-- Hero Section -->
 <app-hero
   title="Contacto"
-  subtitle="Estamos aqui para ayudarte. Contactanos y resolvemos todas tus dudas."
+  subtitle="Estamos aquí para ayudarte. Contáctanos y resolvemos todas tus dudas."
 />
 
 <!-- Contact Form + Info Section -->
@@ -49,9 +49,9 @@
             }
           </div>
 
-          <!-- Correo electronico -->
+          <!-- Correo electrónico -->
           <div>
-            <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Correo electronico</label>
+            <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Correo electrónico</label>
             <input
               id="email"
               type="email"
@@ -62,18 +62,18 @@
             @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
               <div class="mt-1 text-sm text-red-500">
                 @if (contactForm.get('email')?.errors?.['required']) {
-                  <p>El correo electronico es obligatorio.</p>
+                  <p>El correo electrónico es obligatorio.</p>
                 }
                 @if (contactForm.get('email')?.errors?.['email']) {
-                  <p>Introduce un correo electronico valido.</p>
+                  <p>Introduce un correo electrónico válido.</p>
                 }
               </div>
             }
           </div>
 
-          <!-- Telefono -->
+          <!-- Teléfono -->
           <div>
-            <label for="telefono" class="mb-1 block text-sm font-medium text-gray-700">Telefono</label>
+            <label for="telefono" class="mb-1 block text-sm font-medium text-gray-700">Teléfono</label>
             <input
               id="telefono"
               type="tel"
@@ -84,15 +84,15 @@
             @if (contactForm.get('telefono')?.touched && contactForm.get('telefono')?.invalid) {
               <div class="mt-1 text-sm text-red-500">
                 @if (contactForm.get('telefono')?.errors?.['pattern']) {
-                  <p>Introduce un numero de telefono espanol valido.</p>
+                  <p>Introduce un número de teléfono español válido.</p>
                 }
               </div>
             }
           </div>
 
-          <!-- Curso de interes -->
+          <!-- Curso de interés -->
           <div>
-            <label for="curso" class="mb-1 block text-sm font-medium text-gray-700">Curso de interes</label>
+            <label for="curso" class="mb-1 block text-sm font-medium text-gray-700">Curso de interés</label>
             <select
               id="curso"
               formControlName="curso"
@@ -112,7 +112,7 @@
               id="mensaje"
               formControlName="mensaje"
               rows="5"
-              placeholder="Escribe tu mensaje aqui..."
+              placeholder="Escribe tu mensaje aquí..."
               class="w-full resize-y rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:outline-none"
             ></textarea>
             @if (contactForm.get('mensaje')?.touched && contactForm.get('mensaje')?.invalid) {
@@ -143,7 +143,7 @@
 
         <!-- Contact Info Card -->
         <div class="rounded-xl bg-gray-50 p-8">
-          <h3 class="font-heading text-2xl font-bold text-gray-900">Informacion de Contacto</h3>
+          <h3 class="font-heading text-2xl font-bold text-gray-900">Información de Contacto</h3>
 
           <div class="mt-6 space-y-6">
 
@@ -155,7 +155,7 @@
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-medium text-gray-500">Telefono</p>
+                <p class="text-sm font-medium text-gray-500">Teléfono</p>
                 <p class="mt-1 text-base font-semibold text-gray-900">+34 957 476 921</p>
               </div>
             </div>
@@ -168,7 +168,7 @@
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-medium text-gray-500">Correo electronico</p>
+                <p class="text-sm font-medium text-gray-500">Correo electrónico</p>
                 <p class="mt-1 text-base font-semibold text-gray-900">info&#64;educocenter.com</p>
               </div>
             </div>
@@ -182,7 +182,7 @@
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-medium text-gray-500">Direccion</p>
+                <p class="text-sm font-medium text-gray-500">Dirección</p>
                 <p class="mt-1 text-base font-semibold text-gray-900">Calle Alonso El Sabio, 26, 14001 Córdoba</p>
               </div>
             </div>
@@ -197,7 +197,7 @@
               <div>
                 <p class="text-sm font-medium text-gray-500">Horario</p>
                 <p class="mt-1 text-base font-semibold text-gray-900">Lunes a Viernes: 9:00 - 20:00</p>
-                <p class="text-base font-semibold text-gray-900">Sabados: 10:00 - 14:00</p>
+                <p class="text-base font-semibold text-gray-900">Sábados: 10:00 - 14:00</p>
               </div>
             </div>
 

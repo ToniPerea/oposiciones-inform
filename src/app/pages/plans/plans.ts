@@ -51,7 +51,7 @@ export class Plans {
         { text: 'Modelo de programación didáctica y situación de aprendizaje' },
         { text: 'Modelo desarrollado de exposición oral' },
       ],
-      ctaText: 'Mas Informacion',
+      ctaText: 'Más Información',
       ctaLink: '/contacto',
     },
     {
@@ -80,7 +80,7 @@ export class Plans {
       features: [
         { text: 'Todo lo del Plan Básico' },
         { text: 'Clases online en directo' },
-        { text: 'Corrección de programacion didactica' },
+        { text: 'Corrección de programación didáctica' },
         { text: 'Simulacro en diferido de temas' },
       ],
       ctaText: 'Comenzar Ahora',
@@ -93,29 +93,29 @@ export class Plans {
       icon: 'book',
       title: 'Temario Actualizado',
       description:
-        '25 temas revisados y actualizados con la legislación vigente',
+        '25 temas revisados y actualizados con la legislación vigente.',
     },
     {
       icon: 'clipboard',
-      title: 'Casos Practicos',
+      title: 'Casos Prácticos',
       description:
-        'Banco de mas de 200 supuestos practicos resueltos y corregidos.',
+        'Banco de más de 200 supuestos prácticos resueltos y corregidos.',
     },
     {
       icon: 'document',
-      title: 'Programacion Didactica',
+      title: 'Programación Didáctica',
       description:
-        'Modelo de programacion didactica con correcciones personalizadas.',
+        'Modelo de programación didáctica con correcciones personalizadas.',
     },
     {
       icon: 'microphone',
       title: 'Defensa Oral',
       description:
-        'Simulacros de exposicion ante tribunal con feedback detallado.',
+        'Simulacros de exposición ante tribunal con feedback detallado.',
     },
     {
       icon: 'audio',
-      title: 'Resumenes en Audio',
+      title: 'Resúmenes en Audio',
       description:
         'Audios de los temas para estudiar mientras te desplazas o haces deporte.',
     },
@@ -123,49 +123,49 @@ export class Plans {
       icon: 'file',
       title: 'Resumen de un Folio',
       description:
-        'Cada tema resumido en una sola pagina para facilitar el repaso rapido.',
+        'Cada tema resumido en una sola página para facilitar el repaso rápido.',
     },
     {
       icon: 'cards',
       title: 'Flashcards y Mapas Mentales',
       description:
-        'Herramientas visuales interactivas para optimizar tu memorizacion.',
+        'Herramientas visuales interactivas para optimizar tu memorización.',
     },
     {
       icon: 'chart',
-      title: 'Infografias Visuales',
+      title: 'Infografías Visuales',
       description:
-        'Contenido visual de alta calidad para conceptos complejos y estadisticas.',
+        'Contenido visual de alta calidad para conceptos complejos y estadísticas.',
     },
     {
       icon: 'exam',
       title: 'Simulacros Mensuales',
       description:
-        'Simulacro de examen y supuesto practico mensuales con correccion detallada.',
+        'Simulacro de examen y supuesto práctico mensuales con corrección detallada.',
     },
     {
       icon: 'location',
       title: 'Sesiones Presenciales',
       description:
-        'Clases presenciales en academia real ubicada en Cordoba.',
+        'Clases presenciales en academia real ubicada en Córdoba.',
     },
     {
       icon: 'computer',
       title: 'Plataforma Digital',
       description:
-        'Basada en Google Classroom de facil acceso desde cualquier dispositivo.',
+        'Basada en Google Classroom de fácil acceso desde cualquier dispositivo.',
     },
     {
       icon: 'report',
       title: 'Seguimiento Individualizado',
       description:
-        'Informe personalizado de tu progreso y areas de mejora continua.',
+        'Informe personalizado de tu progreso y áreas de mejora continua.',
     },
     {
       icon: 'scale',
-      title: 'Legislacion',
+      title: 'Legislación',
       description:
-        'Actualizaciones continuas sobre cambios normativos en educacion.',
+        'Actualizaciones continuas sobre cambios normativos en educación.',
     },
     {
       icon: 'community',
@@ -175,37 +175,37 @@ export class Plans {
     },
     {
       icon: 'attention',
-      title: 'Atención Personalizadas',
+      title: 'Atención Personalizada',
       description:
-        'Atencion individual con tu preparador para resolver dudas y orientacion continua.',
+        'Atención individual con tu preparador para resolver dudas y orientación continua.',
     },
   ];
 
   readonly faqItems: FaqItem[] = [
     {
-      question: 'Cuando comienzan los cursos?',
+      question: '¿Cuándo comienzan los cursos?',
       answer:
-        'Ofrecemos incorporacion continua. Puedes comenzar en cualquier momento del ano y adaptamos el plan a tu fecha de examen.',
+        'Ofrecemos incorporación continua. Puedes comenzar en cualquier momento del año y adaptamos el plan a tu fecha de examen.',
     },
     {
-      question: 'Puedo cambiar de modalidad?',
+      question: '¿Puedo cambiar de modalidad?',
       answer:
-        'Si, puedes cambiar entre modalidades en cualquier momento sin coste adicional.',
+        'Sí, puedes cambiar entre modalidades en cualquier momento sin coste adicional.',
     },
     {
-      question: 'Que pasa si no apruebo?',
+      question: '¿Qué pasa si no apruebo?',
       answer:
-        'Ofrecemos garantia de continuidad: si no apruebas, continuas tu preparacion de forma gratuita hasta la siguiente convocatoria.',
+        'Ofrecemos garantía de continuidad: si no apruebas, continúas tu preparación de forma gratuita hasta la siguiente convocatoria.',
     },
     {
-      question: 'Hay facilidades de pago?',
+      question: '¿Hay facilidades de pago?',
       answer:
-        'Si, ofrecemos pago mensual sin permanencia, y descuentos por pago trimestral o anual.',
+        'Sí, ofrecemos pago mensual sin permanencia, y descuentos por pago trimestral o anual.',
     },
     {
-      question: 'Las clases quedan grabadas?',
+      question: '¿Las clases quedan grabadas?',
       answer:
-        'Si, todas las clases en directo quedan grabadas y disponibles en la plataforma durante tu periodo de matriculacion.',
+        'Sí, todas las clases en directo quedan grabadas y disponibles en la plataforma durante tu período de matriculación.',
     },
   ];
 

@@ -31,9 +31,9 @@ export class Footer {
   ];
 
   protected readonly contactItems: ContactItem[] = [
-    { icon: 'phone', text: '+34 612 345 678' },
-    { icon: 'email', text: 'info@academiaef.es' },
-    { icon: 'address', text: 'Calle de la Educacion 15, Madrid' },
+    { icon: 'phone', text: '+34 957 476 921' },
+    { icon: 'email', text: 'info@educocenter.com' },
+    { icon: 'address', text: 'Calle Alonso El Sabio, 26, Córdoba' },
   ];
 
   protected readonly socialLinks: SocialLink[] = [

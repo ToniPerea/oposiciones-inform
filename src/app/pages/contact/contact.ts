@@ -33,7 +33,7 @@ export class Contact {
   });
 
   readonly plans: string[] = [
-    'Plan Basico',
+    'Plan Básico',
     'Plan Completo',
     'Plan Premium',
     'Otro',
@@ -42,23 +42,23 @@ export class Contact {
   readonly contactInfo: ContactInfo[] = [
     {
       icon: 'phone',
-      label: 'Telefono',
+      label: 'Teléfono',
       value: '+34 957 476 921',
     },
     {
       icon: 'email',
-      label: 'Correo electronico',
+      label: 'Correo electrónico',
       value: 'info@educocenter.com',
     },
     {
       icon: 'address',
-      label: 'Direccion',
+      label: 'Dirección',
       value: 'Calle Alonso El Sabio, 26, 14001 Córdoba',
     },
     {
       icon: 'schedule',
       label: 'Horario',
-      value: 'Lunes a Viernes: 9:00 - 20:00 / Sabados: 10:00 - 14:00',
+      value: 'Lunes a Viernes: 9:00 - 20:00 / Sábados: 10:00 - 14:00',
     },
   ];
 
