@@ -14,7 +14,7 @@
           Nuestra Mision
         </h2>
         <p class="mt-6 text-lg leading-relaxed text-gray-600">
-          En Academia EF llevamos mas de una decada dedicados a la preparacion
+          En EDUCOEF llevamos mas de una decada dedicados a la preparacion
           de opositores para el cuerpo de Profesores de Secundaria en la
           especialidad de Educacion Fisica. Nuestra mision es proporcionar la
           mejor formacion posible, adaptada a las exigencias actuales del
@@ -92,13 +92,21 @@
         <div class="overflow-hidden rounded-xl bg-white shadow-lg">
           <!-- Avatar -->
           <div class="flex justify-center pt-8">
-            <div
-              class="flex h-24 w-24 items-center justify-center rounded-full bg-primary-100"
-            >
-              <span class="font-heading text-2xl font-bold text-primary-600">
-                {{ member.initials }}
-              </span>
-            </div>
+            @if (member.photo) {
+              <img
+                [src]="member.photo"
+                [alt]="member.name"
+                class="h-24 w-24 rounded-full object-cover"
+              />
+            } @else {
+              <div
+                class="flex h-24 w-24 items-center justify-center rounded-full bg-primary-100"
+              >
+                <span class="font-heading text-2xl font-bold text-primary-600">
+                  {{ member.initials }}
+                </span>
+              </div>
+            }
           </div>
 
           <!-- Info -->

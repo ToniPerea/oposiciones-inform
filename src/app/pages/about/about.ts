@@ -14,7 +14,8 @@ interface Step {
 
 interface TeamMember {
   name: string;
-  initials: string;
+  initials?: string;
+  photo?: string;
   role: string;
   description: string;
 }
@@ -70,11 +71,11 @@ export class About {
 
   readonly teamMembers: TeamMember[] = [
     {
-      name: 'Dr. Antonio Perez',
-      initials: 'AP',
-      role: 'Director y Preparador Principal',
+      name: 'Javier Murillo Moraño',
+      photo: 'assets/team/javier-murillo.jpeg',
+      role: 'Profesor Digital',
       description:
-        'Doctor en Ciencias del Deporte con mas de 15 anos de experiencia en la preparacion de oposiciones. Funcionario de carrera.',
+        'Doctor y Graduado en CAFYD. Profesor Universitario en Eduación Física.',
     },
     {
       name: 'Laura Sanchez',

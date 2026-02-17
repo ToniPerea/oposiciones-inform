@@ -8,8 +8,11 @@
     <div class="flex h-16 items-center justify-between">
 
       <!-- Logo -->
-      <a routerLink="/" class="font-heading text-xl font-bold text-primary-700 tracking-tight" (click)="closeMobileMenu()">
-        Academia EF
+      <a routerLink="/" class="flex items-center gap-2" (click)="closeMobileMenu()">
+        <img src="logo.png" alt="EDUCOEF" class="h-10 w-auto" />
+        <span class="font-heading text-xl font-bold tracking-tight">
+          <span class="text-primary-700">EDUCO</span><span class="text-accent-600">EF</span>
+        </span>
       </a>
 
       <!-- Desktop nav links -->

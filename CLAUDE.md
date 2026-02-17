@@ -1,4 +1,4 @@
-# Academia Oposiciones EF
+# EDUCOEF
 
 Website for a Physical Education teacher exam preparation academy in Spain.
 **Live**: https://ToniPerea.github.io/oposiciones-inform/
