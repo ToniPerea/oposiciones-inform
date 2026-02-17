@@ -43,17 +43,17 @@ export class Contact {
     {
       icon: 'phone',
       label: 'Telefono',
-      value: '+34 612 345 678',
+      value: '+34 957 476 921',
     },
     {
       icon: 'email',
       label: 'Correo electronico',
-      value: 'info@academiaef.es',
+      value: 'info@educocenter.com',
     },
     {
       icon: 'address',
       label: 'Direccion',
-      value: 'Calle de la Educacion 15, 28001 Madrid',
+      value: 'Calle Alonso El Sabio, 26, 14001 Córdoba',
     },
     {
       icon: 'schedule',
