@@ -96,5 +96,4 @@ src/
 - **Pricing**: Plan Básico is **one-time payment** (399€), other plans are monthly
 - Contact form is a **mock** (logs to console) — no backend/EmailJS integration yet
 - SVG icons are inline in templates (Heroicons style)
-- Google Maps iframe embedded in contact page (centered on Madrid)
-- WhatsApp floating button with pre-filled message on contact page
+- Google Maps iframe embedded in contact page (Educo Center, Córdoba)
