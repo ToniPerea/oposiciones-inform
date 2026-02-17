@@ -174,8 +174,8 @@ export class Plans {
         'Grupo exclusivo de alumnos para resolver dudas y compartir recursos.',
     },
     {
-      icon: 'tutoring',
-      title: 'Tutorias Personalizadas',
+      icon: 'attention',
+      title: 'Atención Personalizadas',
       description:
         'Atencion individual con tu preparador para resolver dudas y orientacion continua.',
     },
