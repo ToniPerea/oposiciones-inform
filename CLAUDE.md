@@ -43,7 +43,7 @@ Website for a Physical Education teacher exam preparation academy in Spain.
 
 ### Content Language
 - All user-facing content is in **Spanish**
-- Route paths are in Spanish: `/nosotros`, `/cursos`, `/contacto`
+- Route paths are in Spanish: `/nosotros`, `/planes`, `/contacto`
 
 ## Project Structure
 
@@ -57,17 +57,21 @@ src/
 │   ├── app.config.ts       — Zoneless + Router providers
 │   ├── app.routes.ts       — Lazy-loaded routes
 │   ├── layout/
-│   │   ├── navbar/         — Sticky responsive navbar with mobile hamburger
-│   │   └── footer/         — 4-column footer with nav, contact, social links
+│   │   ├── navbar/         — Sticky navbar with EDUCOEF logo + text branding
+│   │   └── footer/         — 4-column footer with logo, nav, contact, social links
 │   ├── shared/
 │   │   └── hero/           — Reusable hero (signal inputs: title, subtitle, ctaText, ctaLink)
 │   └── pages/
 │       ├── home/           — Landing: hero, features, stats, testimonials, CTA
-│       ├── about/          — Mission, methodology, team members
-│       ├── courses/        — 3 pricing tiers, included items, FAQ accordion
+│       ├── about/          — Mission, methodology, team members with photos
+│       ├── plans/          — 3 pricing tiers (1 one-time, 2 monthly), included items, FAQ
 │       └── contact/        — Reactive form with validation, map, WhatsApp button
 └── public/
-    └── favicon.ico
+    ├── favicon.png         — Site favicon
+    ├── logo.png            — Main logo image
+    ├── logo-alt.png        — Alternative logo variant
+    └── assets/
+        └── team/           — Team member photos
 ```
 
 ## GitHub Pages Deployment
@@ -77,10 +81,20 @@ src/
 - Always use `--base-href=/oposiciones-inform/` when building or deploying
 - Repository must be **public** for free GitHub Pages hosting
 
+## Branding
+
+- **Name**: EDUCOEF (displayed as <span style="color: blue">EDUCO</span><span style="color: orange">EF</span>)
+- **Logo**: Custom logo image displayed in navbar and footer alongside text
+- **Colors**: Primary (blue), Secondary (green), Accent (orange)
+- Favicon: Custom PNG favicon
+
 ## Key Decisions
 
+- **Branding**: Site rebranded to EDUCOEF with custom logo and colored text
+- **Team members**: Support both photo images and initial avatars
+  - First member: Javier Murillo Moraño (Profesor Digital) with professional photo
+- **Pricing**: Plan Básico is **one-time payment** (399€), other plans are monthly
 - Contact form is a **mock** (logs to console) — no backend/EmailJS integration yet
-- No images/photos used — SVG icons are inline in templates (Heroicons style)
-- Team member avatars use initials in colored circles instead of photos
+- SVG icons are inline in templates (Heroicons style)
 - Google Maps iframe embedded in contact page (centered on Madrid)
 - WhatsApp floating button with pre-filled message on contact page

@@ -4,22 +4,22 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home').then(m => m.Home),
-    title: 'Inicio - Academia Oposiciones EF',
+    title: 'Inicio - EDUCOEF',
   },
   {
     path: 'nosotros',
     loadComponent: () => import('./pages/about/about').then(m => m.About),
-    title: 'Sobre Nosotros - Academia Oposiciones EF',
+    title: 'Sobre Nosotros - EDUCOEF',
   },
   {
-    path: 'cursos',
-    loadComponent: () => import('./pages/courses/courses').then(m => m.Courses),
-    title: 'Cursos - Academia Oposiciones EF',
+    path: 'planes',
+    loadComponent: () => import('./pages/plans/plans').then(m => m.Plans),
+    title: 'Planes - EDUCOEF',
   },
   {
     path: 'contacto',
     loadComponent: () => import('./pages/contact/contact').then(m => m.Contact),
-    title: 'Contacto - Academia Oposiciones EF',
+    title: 'Contacto - EDUCOEF',
   },
   {
     path: '**',
