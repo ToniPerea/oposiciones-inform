@@ -32,10 +32,10 @@ export class Contact {
     mensaje: ['', [Validators.required, Validators.minLength(10)]],
   });
 
-  readonly cursos: string[] = [
-    'Curso Basico',
-    'Curso Completo',
-    'Curso Premium',
+  readonly plans: string[] = [
+    'Plan Basico',
+    'Plan Completo',
+    'Plan Premium',
     'Otro',
   ];
 

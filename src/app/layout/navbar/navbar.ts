@@ -16,7 +16,7 @@ export class Navbar {
   protected readonly navLinks = [
     { label: 'Inicio', path: '/' },
     { label: 'Sobre Nosotros', path: '/nosotros' },
-    { label: 'Cursos', path: '/cursos' },
+    { label: 'Planes', path: '/planes' },
     { label: 'Contacto', path: '/contacto' },
   ];
 

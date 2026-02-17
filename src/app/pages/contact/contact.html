@@ -99,8 +99,8 @@
               class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:outline-none"
             >
               <option value="">Selecciona un curso</option>
-              @for (curso of cursos; track curso) {
-                <option [value]="curso">{{ curso }}</option>
+              @for (plan of plans; track plan) {
+                <option [value]="plan">{{ plan }}</option>
               }
             </select>
           </div>
