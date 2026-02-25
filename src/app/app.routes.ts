@@ -22,6 +22,21 @@ export const routes: Routes = [
     title: 'Contacto - EDUCOEF',
   },
   {
+    path: 'aviso-legal',
+    loadComponent: () => import('./pages/legal/aviso-legal/aviso-legal').then(m => m.AvisoLegal),
+    title: 'Aviso Legal - EDUCOEF',
+  },
+  {
+    path: 'politica-privacidad',
+    loadComponent: () => import('./pages/legal/politica-privacidad/politica-privacidad').then(m => m.PoliticaPrivacidad),
+    title: 'Política de Privacidad - EDUCOEF',
+  },
+  {
+    path: 'clausula-informativa',
+    loadComponent: () => import('./pages/legal/clausula-informativa/clausula-informativa').then(m => m.ClausulaInformativa),
+    title: 'Cláusula Informativa - EDUCOEF',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',

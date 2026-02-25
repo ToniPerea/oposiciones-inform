@@ -10,15 +10,15 @@
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
       <!-- Left Column: Mission -->
       <div>
-        <h2 class="font-heading text-3xl font-bold text-gray-900">
+        <h2 appScrollAnimate class="font-heading text-3xl font-bold text-gray-900">
           Nuestra Misión
         </h2>
         <p class="mt-6 text-lg leading-relaxed text-gray-600">
-          En EDUCOEF llevamos más de una década dedicados a la preparación
-          de opositores para el cuerpo de Profesores de Secundaria en la
-          especialidad de Educación Física. Nuestra misión es proporcionar la
-          mejor formación posible, adaptada a las exigencias actuales del
-          proceso selectivo.
+          En EDUCOEF llevamos más de una década dedicados a la preparación de
+          opositores para el cuerpo de Profesores de Secundaria en la especialidad
+          de Educación Física. Nuestro equipo combina profesores universitarios,
+          docentes en activo y opositores aprobados para ofrecerte la preparación
+          más completa y realista posible.
         </p>
         <p class="mt-4 text-lg leading-relaxed text-gray-600">
           Creemos en una preparación integral que combina el dominio del temario
@@ -29,8 +29,8 @@
 
       <!-- Right Column: Values -->
       <div class="flex flex-col gap-6">
-        @for (value of values; track value.title) {
-          <div class="border-l-4 border-primary-600 py-2 pl-4">
+        @for (value of values; track value.title; let i = $index) {
+          <div appScrollAnimate [delay]="i * 100" class="border-l-4 border-primary-600 py-2 pl-4">
             <h3 class="text-xl font-semibold text-gray-900">
               {{ value.title }}
             </h3>
@@ -46,6 +46,7 @@
 <section class="bg-gray-50 py-16 md:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <h2
+      appScrollAnimate
       class="font-heading text-center text-3xl font-bold text-gray-900 md:text-4xl"
     >
       Nuestra Metodología
@@ -59,8 +60,8 @@
       ></div>
 
       <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-        @for (step of steps; track step.number) {
-          <div class="relative flex flex-col items-center text-center">
+        @for (step of steps; track step.number; let i = $index) {
+          <div appScrollAnimate [delay]="i * 100" class="relative flex flex-col items-center text-center">
             <!-- Numbered Circle -->
             <div
               class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-bold text-white"
@@ -82,14 +83,15 @@
 <section class="bg-white py-16 md:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <h2
+      appScrollAnimate
       class="font-heading text-center text-3xl font-bold text-gray-900 md:text-4xl"
     >
       Nuestro Equipo
     </h2>
 
-    <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
-      @for (member of teamMembers; track member.name) {
-        <div class="overflow-hidden rounded-xl bg-white shadow-lg">
+    <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
+      @for (member of teamMembers; track member.name; let i = $index) {
+        <div appScrollAnimate [delay]="i * 150" class="overflow-hidden rounded-xl bg-white shadow-lg">
           <!-- Avatar -->
           <div class="flex justify-center pt-8">
             @if (member.photo) {
