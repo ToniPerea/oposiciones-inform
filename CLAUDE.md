@@ -1,14 +1,14 @@
 # EDUCOEF
 
 Website for a Physical Education teacher exam preparation academy in Spain.
-**Live**: https://ToniPerea.github.io/oposiciones-inform/
+**Live**: https://educoef.com
 
 ## Commands
 
 - `pnpm start` — Dev server (http://localhost:4200)
 - `pnpm build` — Production build
-- `pnpm ng build --base-href=/oposiciones-inform/` — Build for GitHub Pages
-- `pnpm ng deploy --base-href=/oposiciones-inform/` — Deploy to GitHub Pages
+- `pnpm ng build` — Build for production (base-href is `/` by default)
+- `pnpm ng deploy` — Deploy to GitHub Pages (custom domain via public/CNAME)
 - `pnpm test` — Run unit tests (Karma)
 - `pnpm ng generate component <path>` — Generate a new component
 
