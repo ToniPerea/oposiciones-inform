@@ -40,54 +40,45 @@ interface FaqItem {
 })
 export class Plans {
   readonly openFaqIndex = signal<number | null>(null);
+  readonly expandedPlanIndex = signal<number | null>(null);
 
   readonly plans: Plan[] = [
     {
-      name: 'Plan Materiales',
-      price: '149',
+      name: 'Plan Base',
+      price: '200',
       priceType: 'onetime',
       featured: false,
-      badge: 'Autónomo',
+      badge: 'Acceso Total',
       features: [
         { text: 'Temario completo (25 temas actualizados)' },
-        { text: 'Clases grabadas disponibles en plataforma' },
+        { text: 'Clases en diferido disponibles en plataforma' },
         { text: 'Supuestos prácticos resueltos' },
-        { text: 'Contenido actualizado durante el año de curso' },
-        { text: 'Acceso a todas las actualizaciones del año' },
+        { text: 'Programación didáctica y defensa oral' },
+        { text: 'Resúmenes en audio e infografías visuales' },
+        { text: 'Corrección de temas (servicio aparte, por uso)', extra: true },
+        { text: 'Corrección de supuestos prácticos (servicio aparte, por uso)', extra: true },
+        { text: 'Corrección de programación y situaciones de aprendizaje (servicio aparte, por uso)', extra: true },
+        { text: 'Preparación y simulacro de la defensa oral (servicio aparte, por uso)', extra: true },
       ],
-      discount: 'Exalumnos: 129 € (−20 €)',
       ctaText: 'Más Información',
       ctaLink: '/contacto',
     },
     {
-      name: 'Plan Personalizado',
-      price: '79',
+      name: 'Plan Total',
+      price: '120',
       priceType: 'monthly',
       featured: true,
-      badge: 'Personalizado',
-      limitedSpots: true,
-      features: [
-        { text: 'Todo lo del Plan Materiales' },
-        { text: 'Online en directo — toda Andalucía' },
-        { text: 'Corrección de temas (servicio aparte, por uso)', extra: true },
-        { text: 'Corrección de supuestos prácticos (servicio aparte, por uso)', extra: true },
-      ],
-      ctaText: 'Reservar plaza',
-      ctaLink: '/contacto',
-    },
-    {
-      name: 'Plan Premium',
-      price: '150',
-      priceType: 'monthly',
-      featured: false,
       badge: 'Plazas Limitadas',
       limitedSpots: true,
       features: [
-        { text: 'Clases online en directo — toda Andalucía' },
-        { text: 'Clases presenciales — Córdoba capital' },
-        { text: 'Correcciones incluidas en el precio' },
+        { text: 'Todo lo del Plan Base' },
+        { text: 'Simulacros mensuales de temas' },
+        { text: 'Seguimiento personalizado' },
+        { text: 'Corrección de supuestos prácticos' },
+        { text: 'Preparación y simulacro de la defensa oral' },
+        { text: 'Online en directo — toda Andalucía' },
+        { text: 'Presencial en Córdoba capital' },
       ],
-      discount: 'Exalumnos: 130 € (−20 €)',
       ctaText: 'Reservar plaza',
       ctaLink: '/contacto',
     },
@@ -136,14 +127,9 @@ export class Plans {
     },
     {
       icon: 'report',
-      title: 'Seguimiento con IA',
-      description: 'Informe personalizado generado por IA con tus notas y progreso hacia tus objetivos.',
-    },
-    {
-      icon: 'ai',
-      title: 'Asistente IA',
-      description: 'Chatbot con los 25 temas integrados para resolver tus dudas al instante.',
-    },
+      title: 'Seguimiento personalizado',
+      description: 'Informe personalizado con tus notas y progreso hacia tus objetivos.',
+    }
   ];
 
   readonly faqItems: FaqItem[] = [
@@ -176,6 +162,12 @@ export class Plans {
 
   toggleFaq(index: number): void {
     this.openFaqIndex.update((current) =>
+      current === index ? null : index
+    );
+  }
+
+  togglePlan(index: number): void {
+    this.expandedPlanIndex.update((current) =>
       current === index ? null : index
     );
   }

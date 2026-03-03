@@ -33,9 +33,8 @@ export class Contact {
   });
 
   readonly plans: string[] = [
-    'Plan Básico',
-    'Plan Completo',
-    'Plan Premium',
+    'Plan Base',
+    'Plan Total',
     'Otro',
   ];
 
