@@ -51,7 +51,7 @@ export class Contact {
     {
       icon: 'email',
       label: 'Correo electrónico',
-      value: 'info@educocenter.com',
+      value: 'info@educoef.com',
     },
     {
       icon: 'address',
