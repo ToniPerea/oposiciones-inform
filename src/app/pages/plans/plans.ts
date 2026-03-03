@@ -14,6 +14,7 @@ interface Plan {
   priceType: 'monthly' | 'onetime';
   featured: boolean;
   badge?: string;
+  limitedSpots?: boolean;
   features: PlansFeature[];
   discount?: string; // alumni discount note e.g. "Exalumnos: 129 € (−20 €)"
   ctaText: string;
@@ -64,12 +65,14 @@ export class Plans {
       priceType: 'monthly',
       featured: true,
       badge: 'Personalizado',
+      limitedSpots: true,
       features: [
         { text: 'Todo lo del Plan Materiales' },
+        { text: 'Online en directo — toda Andalucía' },
         { text: 'Corrección de temas (servicio aparte, por uso)', extra: true },
         { text: 'Corrección de supuestos prácticos (servicio aparte, por uso)', extra: true },
       ],
-      ctaText: 'Más Información',
+      ctaText: 'Reservar plaza',
       ctaLink: '/contacto',
     },
     {
@@ -78,13 +81,14 @@ export class Plans {
       priceType: 'monthly',
       featured: false,
       badge: 'Plazas Limitadas',
+      limitedSpots: true,
       features: [
-        { text: 'Clases online en directo' },
-        { text: 'Clases presenciales' },
+        { text: 'Clases online en directo — toda Andalucía' },
+        { text: 'Clases presenciales — Córdoba capital' },
         { text: 'Correcciones incluidas en el precio' },
       ],
       discount: 'Exalumnos: 130 € (−20 €)',
-      ctaText: 'Más Información',
+      ctaText: 'Reservar plaza',
       ctaLink: '/contacto',
     },
   ];

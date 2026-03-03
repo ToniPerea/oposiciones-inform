@@ -1,7 +1,7 @@
 <!-- Hero Section -->
 <app-hero
   title="Prepara tus Oposiciones de Educación Física"
-  subtitle="La academia líder en preparación de oposiciones para el Cuerpo de Profesorado de Educación Primaria, especialidad Educación Física. Metodología probada con los mejores resultados."
+  subtitle="Preparación exclusiva para las oposiciones de la Junta de Andalucía · Online en toda Andalucía y presencial en Córdoba"
   ctaText="Comienza tu Preparación"
   ctaLink="/contacto"
 />
@@ -16,6 +16,13 @@
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
         Más de 15 años formando a los mejores profesores de Educación Física
       </p>
+      <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-2 text-sm font-medium text-primary-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        Preparación enfocada al 100% en las oposiciones de la Junta de Andalucía · Online en toda Andalucía · Presencial en Córdoba
+      </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -78,56 +85,69 @@
       </h2>
     </div>
 
-    <!-- Satisfaction Stats -->
-    <div appScrollAnimate class="mb-16 flex flex-col items-center gap-4">
-      <p class="text-sm font-medium uppercase tracking-wide text-gray-500">
-        Basado en encuestas a alumnos 2024
-      </p>
-      <div class="flex flex-col sm:flex-row gap-8 justify-center">
-        <!-- 56% High satisfaction -->
-        <div class="flex flex-col items-center gap-3">
-          <div class="relative h-32 w-32">
-            <svg viewBox="0 0 36 36" class="h-32 w-32 -rotate-90">
-              <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5e7eb" stroke-width="3" />
-              <circle
-                cx="18" cy="18" r="15.9"
-                fill="none"
-                stroke="#2563eb"
-                stroke-width="3"
-                stroke-dasharray="56 44"
-                stroke-linecap="round"
-              />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span class="font-heading text-3xl font-bold text-primary-600">56%</span>
-            </div>
+    <!-- Satisfaction Stats — 2024 Donut Chart -->
+    <div appScrollAnimate class="mb-16 flex flex-col items-center gap-6">
+      <!-- Headline claim -->
+      <div class="text-center">
+        <p class="font-heading text-5xl font-bold text-primary-600">100%</p>
+        <p class="mt-1 text-lg font-semibold text-gray-800">de satisfacción alta o muy alta</p>
+        <p class="text-sm text-gray-500">Encuesta de satisfacción 2024</p>
+      </div>
+
+      <!-- Donut chart + legend -->
+      <div class="flex flex-col sm:flex-row items-center gap-8">
+        <!-- SVG Donut -->
+        <div class="relative h-44 w-44">
+          <svg viewBox="0 0 36 36" class="h-44 w-44 -rotate-90">
+            <!-- Background ring -->
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5e7eb" stroke-width="3.5" />
+            <!-- 56% Alto — primary blue -->
+            <circle
+              cx="18" cy="18" r="15.9"
+              fill="none"
+              stroke="#2563eb"
+              stroke-width="3.5"
+              stroke-dasharray="56 44"
+            />
+            <!-- 44% Muy Alto — dark blue, starts after the 56% segment -->
+            <circle
+              cx="18" cy="18" r="15.9"
+              fill="none"
+              stroke="#1e40af"
+              stroke-width="3.5"
+              stroke-dasharray="44 56"
+              stroke-dashoffset="44"
+            />
+          </svg>
+          <!-- Center label -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span class="font-heading text-2xl font-bold text-gray-900">100%</span>
+            <span class="text-center text-xs leading-tight text-gray-500">Satisfacción<br>alta/muy alta</span>
           </div>
-          <p class="text-center text-sm font-semibold text-gray-700">Alta Satisfacción</p>
         </div>
 
-        <!-- 43% Very high satisfaction -->
-        <div class="flex flex-col items-center gap-3">
-          <div class="relative h-32 w-32">
-            <svg viewBox="0 0 36 36" class="h-32 w-32 -rotate-90">
-              <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5e7eb" stroke-width="3" />
-              <circle
-                cx="18" cy="18" r="15.9"
-                fill="none"
-                stroke="#16a34a"
-                stroke-width="3"
-                stroke-dasharray="43 57"
-                stroke-linecap="round"
-              />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span class="font-heading text-3xl font-bold text-secondary-600">43%</span>
+        <!-- Legend -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <div class="h-4 w-4 shrink-0 rounded-sm bg-primary-600"></div>
+            <div>
+              <p class="font-semibold text-gray-900">Alto</p>
+              <p class="text-2xl font-bold font-heading text-primary-600">56%</p>
             </div>
           </div>
-          <p class="text-center text-sm font-semibold text-gray-700">Muy Alta Satisfacción</p>
+          <div class="flex items-center gap-3">
+            <div class="h-4 w-4 shrink-0 rounded-sm bg-primary-800"></div>
+            <div>
+              <p class="font-semibold text-gray-900">Muy Alto</p>
+              <p class="text-2xl font-bold font-heading text-primary-800">44%</p>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="text-center text-sm text-gray-500 max-w-xs">
-        El 99% de los encuestados valoró su experiencia con alta o muy alta satisfacción
+
+      <!-- Footnote -->
+      <p class="text-center text-xs text-gray-400 max-w-sm">
+        Datos de la encuesta de satisfacción con los preparadores 2024 · 0% de valoraciones medias, bajas o muy bajas
       </p>
     </div>
 

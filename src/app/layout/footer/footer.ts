@@ -33,7 +33,7 @@ export class Footer {
   protected readonly contactItems: ContactItem[] = [
     { icon: 'phone', text: '+34 957 476 921' },
     { icon: 'email', text: 'info@educocenter.com' },
-    { icon: 'address', text: 'Calle Alonso El Sabio, 26, Córdoba' },
+    { icon: 'address', text: 'Calle Alonso El Sabio, 26, Córdoba, Andalucía' },
   ];
 
   protected readonly socialLinks: SocialLink[] = [
