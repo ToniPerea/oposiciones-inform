@@ -73,19 +73,22 @@ export class Contact {
 
     const { nombre, email, telefono, curso, mensaje } = this.contactForm.value;
 
+    const params = {
+      from_name: nombre,
+      from_email: email,
+      phone: telefono || '—',
+      plan: curso || '—',
+      message: mensaje,
+    };
+    const config = { publicKey: environment.emailjs.publicKey };
+
     try {
-      await emailjs.send(
-        environment.emailjs.serviceId,
-        environment.emailjs.templateId,
-        {
-          from_name: nombre,
-          from_email: email,
-          phone: telefono || '—',
-          plan: curso || '—',
-          message: mensaje,
-        },
-        { publicKey: environment.emailjs.publicKey },
-      );
+      await Promise.all([
+        // Confirmation auto-reply to the user
+        emailjs.send(environment.emailjs.serviceId, environment.emailjs.confirmationTemplateId, params, config),
+        // Internal notification to the academy
+        emailjs.send(environment.emailjs.serviceId, environment.emailjs.notificationTemplateId, params, config),
+      ]);
       this.submitted.set(true);
       this.contactForm.reset();
     } catch {

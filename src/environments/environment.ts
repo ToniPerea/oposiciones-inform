@@ -6,6 +6,7 @@ export const environment = {
   emailjs: {
     publicKey: '',
     serviceId: '',
-    templateId: '',
+    confirmationTemplateId: '', // auto-reply to the user
+    notificationTemplateId: '', // internal alert to the academy
   },
 };

@@ -42,7 +42,8 @@ export const environment = {
   emailjs: {
     publicKey: '${get('EMAILJS_PUBLIC_KEY')}',
     serviceId: '${get('EMAILJS_SERVICE_ID')}',
-    templateId: '${get('EMAILJS_TEMPLATE_ID')}',
+    confirmationTemplateId: '${get('EMAILJS_CONFIRMATION_TEMPLATE_ID')}',
+    notificationTemplateId: '${get('EMAILJS_NOTIFICATION_TEMPLATE_ID')}',
   },
 };
 `;

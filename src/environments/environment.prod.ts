@@ -6,6 +6,7 @@ export const environment = {
   emailjs: {
     publicKey: '__EMAILJS_PUBLIC_KEY__',
     serviceId: '__EMAILJS_SERVICE_ID__',
-    templateId: '__EMAILJS_TEMPLATE_ID__',
+    confirmationTemplateId: '__EMAILJS_CONFIRMATION_TEMPLATE_ID__',
+    notificationTemplateId: '__EMAILJS_NOTIFICATION_TEMPLATE_ID__',
   },
 };
