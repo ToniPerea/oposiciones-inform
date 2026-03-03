@@ -53,7 +53,7 @@ export class Plans {
         { text: 'Temario completo (25 temas actualizados)' },
         { text: 'Clases en diferido disponibles en plataforma' },
         { text: 'Supuestos prácticos resueltos' },
-        { text: 'Programación didáctica y defensa oral' },
+        { text: 'Ejemplos de programación didáctica y situaciones de aprendizaje' },
         { text: 'Resúmenes en audio e infografías visuales' },
         { text: 'Corrección de temas (servicio aparte, por uso)', extra: true },
         { text: 'Corrección de supuestos prácticos (servicio aparte, por uso)', extra: true },
