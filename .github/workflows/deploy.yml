@@ -61,7 +61,7 @@ jobs:
           sed -i "s|__EMAILJS_NOTIFICATION_TEMPLATE_ID__|${{ secrets.EMAILJS_NOTIFICATION_TEMPLATE_ID }}|g" src/environments/environment.prod.ts
 
       - name: Build Angular app
-        run: pnpm ng build --base-href=/oposiciones-inform/
+        run: pnpm ng build --base-href=/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
