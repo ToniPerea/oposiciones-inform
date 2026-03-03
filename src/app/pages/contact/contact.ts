@@ -5,7 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 import { Hero } from '../../shared/hero/hero';
+import { environment } from '../../../environments/environment';
 
 interface ContactInfo {
   icon: string;
@@ -23,6 +25,8 @@ export class Contact {
   private fb = inject(FormBuilder);
 
   submitted = signal(false);
+  sending = signal(false);
+  sendError = signal<string | null>(null);
 
   contactForm: FormGroup = this.fb.group({
     nombre: ['', [Validators.required, Validators.minLength(2)]],
@@ -61,11 +65,33 @@ export class Contact {
     },
   ];
 
-  onSubmit(): void {
-    if (this.contactForm.valid) {
-      console.log('Formulario enviado:', this.contactForm.value);
+  async onSubmit(): Promise<void> {
+    if (this.contactForm.invalid) return;
+
+    this.sending.set(true);
+    this.sendError.set(null);
+
+    const { nombre, email, telefono, curso, mensaje } = this.contactForm.value;
+
+    try {
+      await emailjs.send(
+        environment.emailjs.serviceId,
+        environment.emailjs.templateId,
+        {
+          from_name: nombre,
+          from_email: email,
+          phone: telefono || '—',
+          plan: curso || '—',
+          message: mensaje,
+        },
+        { publicKey: environment.emailjs.publicKey },
+      );
       this.submitted.set(true);
       this.contactForm.reset();
+    } catch {
+      this.sendError.set('No se pudo enviar el mensaje. Por favor, inténtalo de nuevo o contáctanos por teléfono.');
+    } finally {
+      this.sending.set(false);
     }
   }
 }
