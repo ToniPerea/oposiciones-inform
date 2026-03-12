@@ -141,17 +141,12 @@ export class Plans {
     {
       question: '¿Puedo cambiar de modalidad?',
       answer:
-        'Sí, puedes cambiar entre modalidades en cualquier momento sin coste adicional.',
-    },
-    {
-      question: '¿Qué pasa si no apruebo?',
-      answer:
-        'Ofrecemos garantía de continuidad: si no apruebas, continúas tu preparación de forma gratuita hasta la siguiente convocatoria.',
+        'Sí, puedes cambiar entre modalidades en cualquier momento.',
     },
     {
       question: '¿Hay facilidades de pago?',
       answer:
-        'Sí, ofrecemos pago mensual sin permanencia, y descuentos por pago trimestral o anual.',
+        'Sí, puedes contactarnos para más información sobre las opciones de pago disponibles.',
     },
     {
       question: '¿Las clases quedan grabadas?',
