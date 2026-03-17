@@ -14,13 +14,6 @@ interface Stat {
   label: string;
 }
 
-interface Testimonial {
-  quote: string;
-  author: string;
-  year: string;
-  rating: number;
-  placeholder?: boolean;
-}
 
 @Component({
   selector: 'app-home',
@@ -46,7 +39,7 @@ export class Home {
       icon: 'users',
       title: 'Grupos Reducidos',
       description:
-        'Atención personalizada con grupos de máximo 15 alumnos por clase.',
+        'Atención personalizada con grupos de máximo 18 alumnos por clase.',
     },
     {
       icon: 'trophy',
@@ -63,29 +56,4 @@ export class Home {
     { value: '98%', label: 'Alumnos Satisfechos' },
   ];
 
-  readonly testimonials: Testimonial[] = [
-    {
-      quote: 'Testimonio próximamente.',
-      author: 'Nombre del alumno',
-      year: 'Promoción 2024',
-      rating: 5,
-      placeholder: true,
-    },
-    {
-      quote: 'Testimonio próximamente.',
-      author: 'Nombre del alumno',
-      year: 'Promoción 2024',
-      rating: 5,
-      placeholder: true,
-    },
-    {
-      quote: 'Testimonio próximamente.',
-      author: 'Nombre del alumno',
-      year: 'Promoción 2024',
-      rating: 5,
-      placeholder: true,
-    },
-  ];
-
-  readonly starArray = [1, 2, 3, 4, 5];
 }
