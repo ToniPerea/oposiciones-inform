@@ -78,8 +78,26 @@ src/
 
 - SPA routing handled by `src/404.html` which redirects all paths to `index.html`
 - The `404.html` is included in the build via `angular.json` assets config
-- Always use `--base-href=/oposiciones-inform/` when building or deploying
 - Repository must be **public** for free GitHub Pages hosting
+
+### ⚠️ Dos flujos de deploy — usar siempre GitHub Actions
+
+Existen dos formas de hacer deploy. **Solo GitHub Actions inyecta los secrets de EmailJS correctamente.**
+
+| Flujo | Cómo se activa | EmailJS funciona |
+|-------|---------------|-----------------|
+| **GitHub Actions** (`.github/workflows/deploy.yml`) | Push a `main` (automático) | ✅ Sí — inyecta los secrets antes de compilar |
+| `pnpm ng deploy` (local) | Manual desde terminal | ❌ No — los placeholders de `environment.prod.ts` no se reemplazan |
+
+**Nunca usar `pnpm ng deploy` para producción.** El formulario de contacto fallará porque `environment.prod.ts` contiene los tokens literales (`EMAILJS_PUBLIC_KEY`, etc.) que solo GitHub Actions sustituye vía `sed` con los secrets del repositorio.
+
+### Secrets necesarios en GitHub
+
+Configurados en Settings → Secrets → Actions del repositorio:
+- `EMAILJS_PUBLIC_KEY`
+- `EMAILJS_SERVICE_ID`
+- `EMAILJS_CONFIRMATION_TEMPLATE_ID`
+- `EMAILJS_NOTIFICATION_TEMPLATE_ID`
 
 ## Branding
 
