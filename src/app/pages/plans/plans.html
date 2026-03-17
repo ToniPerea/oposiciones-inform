@@ -12,11 +12,11 @@
         Elige tu Plan de Preparación
       </h2>
       <p class="mt-4 text-lg text-gray-600">
-        Dos niveles de acompañamiento adaptados a tu ritmo y objetivos
+        Tres niveles de acompañamiento adaptados a tu ritmo y objetivos
       </p>
     </div>
 
-    <div class="mx-auto grid max-w-4xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
+    <div class="mx-auto grid max-w-6xl grid-cols-1 items-stretch gap-8 lg:grid-cols-3">
       @for (plan of plans; track plan.name; let i = $index) {
         <div
           appScrollAnimate [delay]="i * 120"
@@ -29,11 +29,11 @@
           @if (plan.badge) {
             <span
               class="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-1 text-sm font-semibold text-white"
-              [class]="plan.badge === 'Plazas Limitadas'
-                ? 'bg-red-500'
-                : plan.featured
-                  ? 'bg-primary-600'
-                  : 'bg-accent-500'"
+              [class]="plan.badge === 'Todo incluido'
+                ? 'bg-primary-600'
+                : plan.badge === 'Más popular'
+                  ? 'bg-accent-500'
+                  : 'bg-gray-500'"
             >
               {{ plan.badge }}
             </span>
@@ -106,8 +106,8 @@
               }
             </ul>
 
-            <!-- Note for Plan Base extra services -->
-            @if (plan.name === 'Plan Base') {
+            <!-- Note for Plan Plus extra services -->
+            @if (plan.name === 'Plan Plus') {
               <p class="mb-4 rounded-lg bg-accent-50 px-4 py-3 text-xs text-accent-700">
                 Las correcciones se contratan de forma individual, por servicio y según necesidad.
               </p>
