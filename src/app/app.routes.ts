@@ -37,6 +37,11 @@ export const routes: Routes = [
     title: 'Cláusula Informativa - EDUCOEF',
   },
   {
+    path: 'politica-cookies',
+    loadComponent: () => import('./pages/legal/politica-cookies/politica-cookies').then(m => m.PoliticaCookies),
+    title: 'Política de Cookies — EDUCOEF',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
