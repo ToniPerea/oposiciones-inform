@@ -37,8 +37,9 @@ export class Contact {
   });
 
   readonly plans: string[] = [
-    'Plan Base',
-    'Plan Total',
+    'Plan Materiales',
+    'Plan Plus',
+    'Plan Premium',
     'Otro',
   ];
 

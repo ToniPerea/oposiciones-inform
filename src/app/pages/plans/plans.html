@@ -107,7 +107,7 @@
             </ul>
 
             <!-- Note for Plan Plus extra services -->
-            @if (plan.name === 'Plan Plus') {
+            @if (plan.name !== 'Plan Premium') {
               <p class="mb-4 rounded-lg bg-accent-50 px-4 py-3 text-xs text-accent-700">
                 Las correcciones se contratan de forma individual, por servicio y según necesidad.
               </p>
