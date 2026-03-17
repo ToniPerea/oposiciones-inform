@@ -75,25 +75,25 @@ export class About {
       name: 'Javier Murillo Moraño',
       photo: 'assets/team/javier-murillo.jpeg',
       role: 'Profesor Universitario',
-      description: 'Doctor y Graduado en CAFYD. Profesor Universitario en Educación Física.',
+      description: 'Doctor y Graduado en CAFYD, Profesor Universitario en Educación Física con amplia experiencia en la investigación aplicada a la educación física.',
     },
     {
       name: 'Juan de Dios Benítez Sillero',
-      initials: 'JB',
+      photo: 'assets/team/juan-de-dios.png',
       role: 'Profesor Universitario',
       description: 'Antiguo Docente funcionario de la Junta de Andalucía con amplia trayectoria en la preparación de oposiciones.',
     },
     {
       name: 'Álvaro Morente Montero',
-      initials: 'AM',
+      photo: 'assets/team/alvaro-morente.png',
       role: 'Profesor Universitario',
-      description: 'Profesor Universitario con más de 30 años en la docencia.',
+      description: 'Profesor de Universidad de Educación Física durante más de 30 años, experto en todo lo relacionado con los temas y técnicas de estudio.',
     },
     {
       name: 'Fran Plata',
-      initials: 'FP',
+      photo: 'assets/team/fran-plata.png',
       role: 'Profesor funcionario en activo',
-      description: 'Profesor funcionario en activo en Educación Primaria.',
+      description: 'Maestro de Educación Física con más de 20 años de experiencia, experto en exposición y propuestas prácticas.',
     },
   ];
 }
