@@ -27,6 +27,16 @@
 
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
 
+          <!-- Honeypot: campo trampa para bots, NO modificar -->
+          <input
+            type="text"
+            formControlName="website"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"
+          >
+
           <!-- Nombre completo -->
           <div>
             <label for="nombre" class="mb-1 block text-sm font-medium text-gray-700">Nombre completo</label>
@@ -137,10 +147,20 @@
             </div>
           }
 
+          <!-- Rate limit warning -->
+          @if (rateLimitSeconds() > 0) {
+            <div class="flex items-start gap-3 rounded-lg bg-amber-50 p-4 text-amber-800">
+              <svg class="h-5 w-5 shrink-0 mt-0.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p class="text-sm font-medium">Por favor, espera {{ rateLimitSeconds() }} segundos antes de enviar otro mensaje.</p>
+            </div>
+          }
+
           <!-- Submit Button -->
           <button
             type="submit"
-            [disabled]="contactForm.invalid || sending()"
+            [disabled]="contactForm.invalid || sending() || rateLimitSeconds() > 0"
             class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary-600 py-3 text-lg font-semibold text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             @if (sending()) {
