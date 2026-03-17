@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import emailjs from '@emailjs/browser';
+import { Title, Meta } from '@angular/platform-browser';
 import { Hero } from '../../shared/hero/hero';
 import { environment } from '../../../environments/environment';
 
@@ -22,11 +23,18 @@ interface ContactInfo {
   styleUrl: './contact.css',
 })
 export class Contact {
+  constructor() {
+    inject(Title).setTitle('Contacto | Academia Oposiciones Educación Física Córdoba | EDUCOEF');
+    inject(Meta).updateTag({ name: 'description', content: 'Contacta con EDUCOEF, academia de oposiciones de Educación Física en Córdoba. Preparación presencial en Córdoba y online para toda Andalucía.' });
+  }
+
   private fb = inject(FormBuilder);
 
   submitted = signal(false);
   sending = signal(false);
   sendError = signal<string | null>(null);
+  rateLimitSeconds = signal(0);
+  private rateLimitTimer: ReturnType<typeof setInterval> | null = null;
 
   contactForm: FormGroup = this.fb.group({
     nombre: ['', [Validators.required, Validators.minLength(2)]],
@@ -34,6 +42,7 @@ export class Contact {
     telefono: ['', [Validators.pattern(/^(\+34)?[6-9]\d{8}$/)]],
     curso: [''],
     mensaje: ['', [Validators.required, Validators.minLength(10)]],
+    website: [''], // honeypot — campo trampa para bots, nunca lo rellena un humano
   });
 
   readonly plans: string[] = [
@@ -66,8 +75,39 @@ export class Contact {
     },
   ];
 
+  private checkRateLimit(): boolean {
+    const lastSent = localStorage.getItem('lastContactSent');
+    if (!lastSent) return false;
+    const elapsed = (Date.now() - parseInt(lastSent, 10)) / 1000;
+    if (elapsed < 60) {
+      const remaining = Math.ceil(60 - elapsed);
+      this.rateLimitSeconds.set(remaining);
+      if (this.rateLimitTimer) clearInterval(this.rateLimitTimer);
+      this.rateLimitTimer = setInterval(() => {
+        this.rateLimitSeconds.update(v => {
+          if (v <= 1) {
+            clearInterval(this.rateLimitTimer!);
+            return 0;
+          }
+          return v - 1;
+        });
+      }, 1000);
+      return true;
+    }
+    return false;
+  }
+
   async onSubmit(): Promise<void> {
     if (this.contactForm.invalid) return;
+
+    // Honeypot: si este campo tiene valor, es un bot — silenciar sin avisar
+    if (this.contactForm.get('website')?.value) {
+      this.submitted.set(true);
+      return;
+    }
+
+    // Rate limiting: máximo 1 mensaje por minuto
+    if (this.checkRateLimit()) return;
 
     this.sending.set(true);
     this.sendError.set(null);
@@ -91,6 +131,7 @@ export class Contact {
         emailjs.send(environment.emailjs.serviceId, environment.emailjs.notificationTemplateId, params, config),
       ]);
       this.submitted.set(true);
+      localStorage.setItem('lastContactSent', Date.now().toString());
       this.contactForm.reset();
     } catch {
       this.sendError.set('No se pudo enviar el mensaje. Por favor, inténtalo de nuevo o contáctanos por teléfono.');

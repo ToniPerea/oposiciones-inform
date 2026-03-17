@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 import { Hero } from '../../shared/hero/hero';
 import { ScrollAnimate } from '../../shared/scroll-animate/scroll-animate';
 
@@ -22,6 +23,11 @@ interface Stat {
   styleUrl: './home.css',
 })
 export class Home {
+  constructor() {
+    inject(Title).setTitle('Academia Oposiciones Educación Física Córdoba | EDUCOEF Andalucía');
+    inject(Meta).updateTag({ name: 'description', content: 'Prepara tus oposiciones de profesor de Educación Física en Andalucía. Clases presenciales en Córdoba y online para toda Andalucía. Metodología probada y plazas limitadas.' });
+  }
+
   readonly features: Feature[] = [
     {
       icon: 'book',

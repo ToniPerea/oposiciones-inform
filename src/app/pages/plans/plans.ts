@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 import { Hero } from '../../shared/hero/hero';
 import { ScrollAnimate } from '../../shared/scroll-animate/scroll-animate';
 
@@ -39,6 +40,11 @@ interface FaqItem {
   styleUrl: './plans.css',
 })
 export class Plans {
+  constructor() {
+    inject(Title).setTitle('Planes de Preparación | Oposiciones EF Andalucía — EDUCOEF Córdoba');
+    inject(Meta).updateTag({ name: 'description', content: 'Plan Materiales, Plan Plus y Plan Premium para preparar oposiciones de EF en Andalucía. Modalidad presencial en Córdoba u online desde cualquier punto de Andalucía.' });
+  }
+
   readonly openFaqIndex = signal<number | null>(null);
   readonly expandedPlanIndex = signal<number | null>(null);
 

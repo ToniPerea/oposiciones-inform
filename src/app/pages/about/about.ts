@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { Hero } from '../../shared/hero/hero';
 import { ScrollAnimate } from '../../shared/scroll-animate/scroll-animate';
 
@@ -28,6 +29,11 @@ interface TeamMember {
   styleUrl: './about.css',
 })
 export class About {
+  constructor() {
+    inject(Title).setTitle('Quiénes Somos | Academia Oposiciones EF Córdoba Andalucía | EDUCOEF');
+    inject(Meta).updateTag({ name: 'description', content: 'Equipo de preparadores especializados en oposiciones de Educación Física para Andalucía. Metodología probada con profesores universitarios y docentes activos en Córdoba.' });
+  }
+
   readonly values: Value[] = [
     {
       title: 'Excelencia',
