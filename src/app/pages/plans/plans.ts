@@ -59,6 +59,7 @@ export class Plans implements OnInit, OnDestroy {
   }
 
   private injectFaqSchema(): void {
+    if (this.document.getElementById('faq-schema')) return;
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
