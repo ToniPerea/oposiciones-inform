@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, OnInit, OnDestroy, DOCUMENT } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { Hero } from '../../shared/hero/hero';
@@ -39,10 +39,40 @@ interface FaqItem {
   templateUrl: './plans.html',
   styleUrl: './plans.css',
 })
-export class Plans {
+export class Plans implements OnInit, OnDestroy {
+  private readonly document = inject(DOCUMENT);
+
   constructor() {
     inject(Title).setTitle('Planes de Preparación | Oposiciones EF Andalucía — EDUCOEF Córdoba');
     inject(Meta).updateTag({ name: 'description', content: 'Plan Materiales, Plan Plus y Plan Premium para preparar oposiciones de EF en Andalucía. Modalidad presencial en Córdoba u online desde cualquier punto de Andalucía.' });
+  }
+
+  ngOnInit(): void {
+    this.injectFaqSchema();
+  }
+
+  ngOnDestroy(): void {
+    this.document.getElementById('faq-schema')?.remove();
+  }
+
+  private injectFaqSchema(): void {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: this.faqItems.map(item => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    };
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'faq-schema';
+    script.text = JSON.stringify(schema);
+    this.document.head.appendChild(script);
   }
 
   readonly openFaqIndex = signal<number | null>(null);
