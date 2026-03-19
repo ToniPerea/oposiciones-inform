@@ -139,6 +139,11 @@ export class Contact {
       this.submitted.set(true);
       if (isPlatformBrowser(this.platformId)) {
         localStorage.setItem('lastContactSent', Date.now().toString());
+        // GA4 conversion event
+        (window as any).gtag?.('event', 'generate_lead', {
+          event_category: 'contacto',
+          event_label: curso || 'sin plan',
+        });
       }
       this.contactForm.reset();
     } catch {
