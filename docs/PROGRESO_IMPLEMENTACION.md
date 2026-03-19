@@ -43,7 +43,7 @@
 ## Acciones manuales pendientes (hacer tú)
 
 - [ ] **Desplegar a producción** — hacer push a `main` para que GitHub Actions despliegue automáticamente en `educoef.com`
-- [ ] Registrar `educoef.com` en **Google Search Console** y enviar `/sitemap.xml`
+- [x] Registrar `educoef.com` en **Google Search Console** y enviar `https://educoef.com/sitemap.xml` ✅ (2026-03-17)
 - [ ] Registrar en **Google reCAPTCHA v3**:
   1. Ir a https://www.google.com/recaptcha/admin/create
   2. Elegir reCAPTCHA v3, añadir dominio `educoef.com`
@@ -71,6 +71,45 @@
 - Página `/politica-cookies` con tabla de cookies, instrucciones de eliminación por navegador y contacto
 - Banner fijo en la parte inferior visible solo la primera vez; desaparece al aceptar y no vuelve a aparecer (localStorage)
 - Enlace "Política de cookies" añadido al pie legal del footer
+
+---
+
+## Pendiente: Google Analytics 4 (para otra sesión)
+
+### Pasos a seguir en orden:
+
+**1. Crear propiedad GA4** (tú, manual)
+- Ve a analytics.google.com
+- Crea una cuenta/propiedad para `educoef.com`
+- Obtén el **Measurement ID** con formato `G-XXXXXXXXXX`
+
+**2. Configurar Tag Manager** (ya tienes el contenedor `GTM-TZN5F65L`)
+- En Tag Manager → **Nueva etiqueta → Google Analytics → GA4**
+- Pega el Measurement ID `G-XXXXXXXXXX`
+- Activador: **All Pages**
+- Guarda y **Publica**
+
+**3. Añadir snippet GTM al código** (Claude Code)
+- Añadir en `index.html` justo después de `<head>`:
+```html
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TZN5F65L');</script>
+```
+- Añadir en `index.html` justo después de `<body>`:
+```html
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZN5F65L"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+```
+
+**4. Actualizar política de cookies** (Claude Code)
+- Añadir cookies de GA4 a la tabla en `/politica-cookies`
+
+**5. Desplegar** — push a `main` → GitHub Actions despliega automáticamente
 
 ---
 

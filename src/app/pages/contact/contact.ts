@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import {
   ReactiveFormsModule,
   FormBuilder,
@@ -31,6 +32,7 @@ export class Contact {
     });
   }
 
+  private readonly platformId = inject(PLATFORM_ID);
   private fb = inject(FormBuilder);
 
   submitted = signal(false);
@@ -79,6 +81,7 @@ export class Contact {
   ];
 
   private checkRateLimit(): boolean {
+    if (!isPlatformBrowser(this.platformId)) return false;
     const lastSent = localStorage.getItem('lastContactSent');
     if (!lastSent) return false;
     const elapsed = (Date.now() - parseInt(lastSent, 10)) / 1000;
@@ -134,7 +137,9 @@ export class Contact {
         emailjs.send(environment.emailjs.serviceId, environment.emailjs.notificationTemplateId, params, config),
       ]);
       this.submitted.set(true);
-      localStorage.setItem('lastContactSent', Date.now().toString());
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('lastContactSent', Date.now().toString());
+      }
       this.contactForm.reset();
     } catch {
       this.sendError.set('No se pudo enviar el mensaje. Por favor, inténtalo de nuevo o contáctanos por teléfono.');

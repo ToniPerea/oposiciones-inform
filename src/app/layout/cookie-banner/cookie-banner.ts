@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,10 +8,15 @@ import { RouterLink } from '@angular/router';
   templateUrl: './cookie-banner.html',
 })
 export class CookieBanner {
-  visible = signal(!localStorage.getItem('cookieConsent'));
+  private readonly platformId = inject(PLATFORM_ID);
+  visible = signal(
+    isPlatformBrowser(this.platformId) ? !localStorage.getItem('cookieConsent') : false
+  );
 
   accept(): void {
-    localStorage.setItem('cookieConsent', 'true');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('cookieConsent', 'true');
+    }
     this.visible.set(false);
   }
 }
