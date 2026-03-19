@@ -1,8 +1,8 @@
 import { Component, signal, inject, OnInit, OnDestroy, DOCUMENT } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Title, Meta } from '@angular/platform-browser';
 import { Hero } from '../../shared/hero/hero';
 import { ScrollAnimate } from '../../shared/scroll-animate/scroll-animate';
+import { SeoService } from '../../shared/seo/seo';
 
 interface PlansFeature {
   text: string;
@@ -43,8 +43,11 @@ export class Plans implements OnInit, OnDestroy {
   private readonly document = inject(DOCUMENT);
 
   constructor() {
-    inject(Title).setTitle('Planes de Preparación | Oposiciones EF Andalucía — EDUCOEF Córdoba');
-    inject(Meta).updateTag({ name: 'description', content: 'Plan Materiales, Plan Plus y Plan Premium para preparar oposiciones de EF en Andalucía. Modalidad presencial en Córdoba u online desde cualquier punto de Andalucía.' });
+    inject(SeoService).set({
+      title: 'Planes de Preparación | Oposiciones EF Andalucía — EDUCOEF Córdoba',
+      description: 'Plan Materiales, Plus y Premium para oposiciones de EF en Andalucía. Presencial en Córdoba u online. Plazas limitadas para Plan Premium.',
+      canonical: 'https://educoef.com/planes',
+    });
   }
 
   ngOnInit(): void {

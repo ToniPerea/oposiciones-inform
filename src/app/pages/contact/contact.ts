@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import emailjs from '@emailjs/browser';
-import { Title, Meta } from '@angular/platform-browser';
 import { Hero } from '../../shared/hero/hero';
+import { SeoService } from '../../shared/seo/seo';
 import { environment } from '../../../environments/environment';
 
 interface ContactInfo {
@@ -24,8 +24,11 @@ interface ContactInfo {
 })
 export class Contact {
   constructor() {
-    inject(Title).setTitle('Contacto | Academia Oposiciones Educación Física Córdoba | EDUCOEF');
-    inject(Meta).updateTag({ name: 'description', content: 'Contacta con EDUCOEF, academia de oposiciones de Educación Física en Córdoba. Preparación presencial en Córdoba y online para toda Andalucía.' });
+    inject(SeoService).set({
+      title: 'Contacto | Academia Oposiciones Educación Física Córdoba | EDUCOEF',
+      description: 'Contacta con EDUCOEF, academia de oposiciones de EF en Córdoba. Preparación presencial y online para toda Andalucía. Respuesta en menos de 24h.',
+      canonical: 'https://educoef.com/contacto',
+    });
   }
 
   private fb = inject(FormBuilder);
