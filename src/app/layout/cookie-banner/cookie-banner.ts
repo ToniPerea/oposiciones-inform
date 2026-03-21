@@ -1,6 +1,6 @@
-import { Component, signal, inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, signal, inject, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CookieConsentService } from '../../shared/services/cookie-consent.service';
 
 @Component({
   selector: 'app-cookie-banner',
@@ -8,15 +8,25 @@ import { RouterLink } from '@angular/router';
   templateUrl: './cookie-banner.html',
 })
 export class CookieBanner {
-  private readonly platformId = inject(PLATFORM_ID);
-  visible = signal(
-    isPlatformBrowser(this.platformId) ? !localStorage.getItem('cookieConsent') : false
-  );
+  private readonly consent = inject(CookieConsentService);
 
-  accept(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('cookieConsent', 'true');
-    }
-    this.visible.set(false);
+  visible = computed(() => !this.consent.consentGiven());
+  showCustomize = signal(false);
+  analyticsToggle = signal(true);
+
+  acceptAll(): void {
+    this.consent.acceptAll();
+  }
+
+  rejectAll(): void {
+    this.consent.rejectNonEssential();
+  }
+
+  openCustomize(): void {
+    this.showCustomize.set(true);
+  }
+
+  saveCustom(): void {
+    this.consent.savePreferences({ necessary: true, analytics: this.analyticsToggle() });
   }
 }

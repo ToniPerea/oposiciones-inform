@@ -1,18 +1,102 @@
 @if (visible()) {
-  <div class="fixed bottom-0 left-0 right-0 z-50 bg-gray-900 text-white px-4 py-4 shadow-lg">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-gray-200 text-center sm:text-left">
-        Usamos cookies técnicas y de reCAPTCHA para mejorar tu experiencia y proteger el formulario de contacto.
-        <a routerLink="/politica-cookies" class="underline text-primary-300 hover:text-primary-200 ml-1">
-          Más información
-        </a>
-      </p>
-      <button
-        (click)="accept()"
-        class="shrink-0 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer"
-      >
-        Aceptar
-      </button>
-    </div>
+  <div class="fixed bottom-0 left-0 right-0 z-50 shadow-2xl">
+
+    @if (!showCustomize()) {
+      <!-- Banner principal -->
+      <div class="bg-gray-900 text-white px-4 py-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
+            <p class="flex-1 text-sm text-gray-300">
+              Usamos <strong class="text-white">cookies necesarias</strong> para el funcionamiento del sitio y,
+              con tu consentimiento, <strong class="text-white">cookies analíticas</strong> (Google Analytics)
+              para mejorar nuestros contenidos.
+              <a routerLink="/politica-cookies" class="underline text-primary-300 hover:text-primary-200 ml-1">
+                Más información
+              </a>
+            </p>
+            <div class="flex flex-wrap items-center gap-2 shrink-0">
+              <button
+                (click)="openCustomize()"
+                class="text-sm text-gray-400 hover:text-white underline px-3 py-2 transition-colors cursor-pointer"
+              >
+                Personalizar
+              </button>
+              <button
+                (click)="rejectAll()"
+                class="bg-gray-700 hover:bg-gray-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer"
+              >
+                Solo necesarias
+              </button>
+              <button
+                (click)="acceptAll()"
+                class="bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer"
+              >
+                Aceptar todas
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <!-- Panel de personalización -->
+      <div class="bg-gray-900 text-white px-4 py-6">
+        <div class="max-w-2xl mx-auto">
+          <h3 class="text-base font-semibold mb-1">Configuración de cookies</h3>
+          <p class="text-xs text-gray-400 mb-4">
+            Puedes activar o desactivar cada categoría. Las cookies necesarias no se pueden desactivar.
+          </p>
+
+          <!-- Cookies necesarias (siempre activas) -->
+          <div class="flex items-start justify-between py-3 border-b border-gray-700">
+            <div class="flex-1 pr-4">
+              <p class="text-sm font-semibold">Cookies necesarias</p>
+              <p class="text-xs text-gray-400 mt-1">
+                Imprescindibles para el funcionamiento del sitio: guardan tus preferencias de cookies
+                y evitan el envío duplicado del formulario de contacto.
+              </p>
+            </div>
+            <span class="shrink-0 text-xs text-gray-500 italic mt-0.5">Siempre activas</span>
+          </div>
+
+          <!-- Cookies analíticas (opcional) -->
+          <div class="flex items-start justify-between py-3 border-b border-gray-700">
+            <div class="flex-1 pr-4">
+              <p class="text-sm font-semibold">Cookies analíticas</p>
+              <p class="text-xs text-gray-400 mt-1">
+                Google Analytics nos ayuda a entender cómo se usa el sitio para mejorarlo.
+                Genera las cookies <code class="bg-gray-800 px-1 rounded text-gray-300">_ga</code>
+                y <code class="bg-gray-800 px-1 rounded text-gray-300">_ga_*</code> (duración: 2 años).
+              </p>
+            </div>
+            <!-- Toggle switch -->
+            <button
+              (click)="analyticsToggle.set(!analyticsToggle())"
+              class="shrink-0 relative inline-flex h-6 w-11 cursor-pointer rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-900 mt-0.5"
+              [class.bg-primary-600]="analyticsToggle()"
+              [class.bg-gray-600]="!analyticsToggle()"
+              role="switch"
+              [attr.aria-checked]="analyticsToggle()"
+              aria-label="Activar cookies analíticas"
+            >
+              <span
+                class="inline-block h-5 w-5 rounded-full bg-white shadow transform transition-transform duration-200 mt-0.5"
+                [class.translate-x-5]="analyticsToggle()"
+                [class.translate-x-0.5]="!analyticsToggle()"
+              ></span>
+            </button>
+          </div>
+
+          <div class="flex justify-end gap-3 mt-4">
+            <button
+              (click)="saveCustom()"
+              class="bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer"
+            >
+              Guardar preferencias
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
   </div>
 }
