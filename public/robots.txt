@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Bloquear URLs de redirección SPA (GitHub Pages hack)
+Disallow: /?/
+
+Sitemap: https://educoef.com/sitemap.xml
