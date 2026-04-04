@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { SeoService } from '../../../shared/seo/seo';
 
 @Component({
   selector: 'app-politica-cookies',
@@ -8,7 +8,11 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class PoliticaCookies {
   constructor() {
-    inject(Title).setTitle('Política de Cookies | EDUCOEF');
-    inject(Meta).updateTag({ name: 'description', content: 'Política de cookies de EDUCOEF. Información sobre las cookies que usamos y cómo gestionarlas.' });
+    inject(SeoService).set({
+      title: 'Política de Cookies — EDUCOEF',
+      description: 'Política de cookies de EDUCOEF. Información sobre las cookies que usamos y cómo gestionarlas.',
+      canonical: 'https://educoef.com/politica-cookies',
+      noindex: true,
+    });
   }
 }
