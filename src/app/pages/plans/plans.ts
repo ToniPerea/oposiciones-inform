@@ -103,7 +103,6 @@ export class Plans implements OnInit, OnDestroy {
       price: '100',
       priceType: 'monthly',
       featured: false,
-      badge: 'Más popular',
       features: [
         { text: 'Todo lo del Plan Materiales' },
         { text: 'Acceso a plataforma con clases en diferido' },

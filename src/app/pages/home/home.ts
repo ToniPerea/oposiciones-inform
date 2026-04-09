@@ -54,13 +54,12 @@ export class Home {
       icon: 'trophy',
       title: 'Alto Porcentaje de Aprobados',
       description:
-        'Más del 75% de nuestros alumnos consiguen plaza en su primera convocatoria.',
+        'Un alto porcentaje de nuestros alumnos superan la oposición cada convocatoria.',
     },
   ];
 
   readonly stats: Stat[] = [
     { value: '+500', label: 'Alumnos Formados' },
-    { value: '75%', label: 'Tasa de Aprobados' },
     { value: '+15', label: 'Años de Experiencia' },
     { value: '98%', label: 'Alumnos Satisfechos' },
   ];
