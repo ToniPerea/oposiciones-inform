@@ -59,7 +59,7 @@ export class Home {
   ];
 
   readonly stats: Stat[] = [
-    { value: '+500', label: 'Alumnos Formados' },
+    { value: '+200', label: 'Alumnos Formados' },
     { value: '+15', label: 'Años de Experiencia' },
     { value: '98%', label: 'Alumnos Satisfechos' },
   ];
