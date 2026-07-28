@@ -61,7 +61,7 @@ export class Contact {
     {
       icon: 'phone',
       label: 'Teléfono',
-      value: '+34 957 476 921',
+      value: '+34 652 249 669',
     },
     {
       icon: 'email',
