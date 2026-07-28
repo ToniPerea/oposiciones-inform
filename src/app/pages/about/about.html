@@ -91,7 +91,15 @@
 
     <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
       @for (member of teamMembers; track member.name; let i = $index) {
-        <div appScrollAnimate [delay]="i * 150" class="overflow-hidden rounded-xl bg-white shadow-lg">
+        <div
+          appScrollAnimate
+          [delay]="i * 150"
+          [class]="
+            i === teamMembers.length - 1 && teamMembers.length % 2 === 1
+              ? 'overflow-hidden rounded-xl bg-white shadow-lg sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-sm'
+              : 'overflow-hidden rounded-xl bg-white shadow-lg'
+          "
+        >
           <!-- Avatar -->
           <div class="flex justify-center pt-8">
             @if (member.photo) {

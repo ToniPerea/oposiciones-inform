@@ -104,5 +104,11 @@ export class About {
       role: 'Profesor funcionario en activo',
       description: 'Maestro de Educación Física con más de 20 años de experiencia, experto en exposición y propuestas prácticas.',
     },
+    {
+      name: 'Moisés Jiménez Lozano',
+      photo: 'assets/team/moises-jimenez-lozano.png',
+      role: 'Profesor de Educación Secundaria',
+      description: 'Profesor de Educación Secundaria con más de 20 años de experiencia. Tribunal de oposiciones y experiencia como preparador durante más de 10 años.',
+    },
   ];
 }
