@@ -64,4 +64,5 @@ export class Home {
     { value: '98%', label: 'Alumnos Satisfechos' },
   ];
 
+  readonly googleReviewUrl = 'https://g.page/r/CZmNDjsV-Y6BEBM/review';
 }

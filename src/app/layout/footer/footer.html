@@ -57,11 +57,25 @@
               <span>{{ item.text }}</span>
             </li>
           }
+          <li class="flex items-start gap-3 text-gray-400 text-sm">
+            <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385c.117.489-.417.877-.842.6l-4.725-3.03a.563.563 0 00-.61 0l-4.725 3.03c-.425.276-.96-.113-.842-.6l1.285-5.385a.563.563 0 00-.182-.557l-4.204-3.602c-.38-.325-.178-.948.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+            </svg>
+            <a
+              [href]="googleReviewUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-white transition-colors duration-200"
+            >
+              Déjanos tu reseña en Google
+            </a>
+          </li>
         </ul>
       </div>
 
       <!-- Column 4: Siguenos -->
-      <div *ngIf="false">
+      @if (false) {
+      <div>
         <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
         <div class="flex gap-4">
           @for (social of socialLinks; track social.name) {
@@ -93,6 +107,7 @@
           }
         </div>
       </div>
+      }
 
     </div>
   </div>

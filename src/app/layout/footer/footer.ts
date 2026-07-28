@@ -23,6 +23,8 @@ interface SocialLink {
   styleUrl: './footer.css',
 })
 export class Footer {
+  protected readonly googleReviewUrl = 'https://g.page/r/CZmNDjsV-Y6BEBM/review';
+
   protected readonly navLinks: NavLink[] = [
     { label: 'Inicio', path: '/' },
     { label: 'Sobre Nosotros', path: '/nosotros' },
