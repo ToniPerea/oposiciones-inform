@@ -1,0 +1,60 @@
+social-video.sh — instrucciones de uso
+======================================
+
+Qué hace
+--------
+Convierte un vídeo grabado con el móvil en 3 versiones listas para redes
+sociales / web, cada una con:
+
+  - Intro animado (~2.8s): el logo se "forma" (libro + cinta/balón),
+    destello y aparición del texto "EDUCOEF" sobre un fondo con
+    degradado de marca.
+  - Clip principal: tu vídeo centrado, con fondo difuminado (el propio
+    vídeo ampliado y blureado) para rellenar el encuadre sin recortar
+    nada importante, más una marca de agua discreta en la esquina.
+  - Outro animado (~2.3s): logo + "educoef.com".
+
+Formatos generados por cada clip de entrada:
+  - 1080x1920 (9:16) — Instagram/TikTok Reels y Stories
+  - 1080x1080 (1:1)  — feed de Instagram
+  - 1920x1080 (16:9) — web / YouTube
+
+Requisitos
+----------
+- ffmpeg y ffprobe instalados (macOS: brew install ffmpeg)
+- No requiere nada más: las imágenes de marca (logo, wordmark, blobs de
+  color, destello) ya están pre-generadas en scripts/assets/
+
+Cómo usarlo
+-----------
+Desde la raíz del proyecto:
+
+    ./scripts/social-video.sh clip.mov
+
+Puedes pasar varios clips a la vez:
+
+    ./scripts/social-video.sh clip1.mov clip2.mp4 clip3.mov
+
+Los vídeos de salida se guardan en:
+
+    scripts/social-video-output/<nombre-del-clip>_9x16.mp4
+    scripts/social-video-output/<nombre-del-clip>_1x1.mp4
+    scripts/social-video-output/<nombre-del-clip>_16x9.mp4
+
+Esa carpeta (y scripts/.cache/, usada para archivos temporales) están
+excluidas de git — no hace falta borrarlas manualmente, pero tampoco se
+suben al repositorio.
+
+Notas
+-----
+- El audio original del clip se conserva. Si el clip no tiene audio, el
+  vídeo final igualmente lleva una pista de audio silenciosa (necesario
+  para que los 3 tramos —intro/clip/outro— se puedan unir sin errores).
+- El vídeo de entrada puede ser vertical, horizontal o cuadrado: el
+  script detecta la orientación automáticamente y aplica el fondo
+  difuminado según haga falta para cada uno de los 3 formatos de salida.
+- Para cambiar colores, duración del intro/outro, tamaño del logo, etc.,
+  las constantes están al principio de scripts/social-video.sh
+  (INTRO_DURATION, OUTRO_DURATION, tamaños de escala en cada función).
+- Si algún día se quiere música de fondo, habría que añadirla como pista
+  de audio adicional mezclada en make_main (no incluido en esta versión).

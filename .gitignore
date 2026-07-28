@@ -50,3 +50,10 @@ Thumbs.db
 
 # Environment secrets — never commit
 .env
+
+# IA things
+.agents
+
+# Social video script (temporales y salidas generadas)
+/scripts/.cache/
+/scripts/social-video-output/
