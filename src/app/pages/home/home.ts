@@ -56,7 +56,7 @@ export class Home {
       icon: 'users',
       title: 'Grupos Reducidos',
       description:
-        'Atención personalizada con grupos de máximo 18 alumnos por clase.',
+        'Atención personalizada con grupos de máximo 22 alumnos por clase.',
     },
     {
       icon: 'trophy',
