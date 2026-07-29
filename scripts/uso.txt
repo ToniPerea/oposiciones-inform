@@ -45,6 +45,18 @@ Esa carpeta (y scripts/.cache/, usada para archivos temporales) están
 excluidas de git — no hace falta borrarlas manualmente, pero tampoco se
 suben al repositorio.
 
+Sacar solo el intro/outro
+-------------------------
+Si quieres el intro y el outro como clips sueltos (sin el vídeo principal),
+por ejemplo para usarlos en otro montaje o editor:
+
+    ./scripts/social-video-intro-outro.sh
+
+Genera, sin necesitar ningún clip de entrada:
+
+    scripts/social-video-output/intro_9x16.mp4  (+ intro_1x1, intro_16x9)
+    scripts/social-video-output/outro_9x16.mp4  (+ outro_1x1, outro_16x9)
+
 Notas
 -----
 - El audio original del clip se conserva. Si el clip no tiene audio, el
