@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Hero } from '../../shared/hero/hero';
 import { ScrollAnimate } from '../../shared/scroll-animate/scroll-animate';
@@ -13,6 +13,14 @@ interface Feature {
 interface Stat {
   value: string;
   label: string;
+}
+
+interface Review {
+  name: string;
+  initials: string;
+  rating: number;
+  timeAgo: string;
+  text: string;
 }
 
 
@@ -65,4 +73,53 @@ export class Home {
   ];
 
   readonly googleReviewUrl = 'https://g.page/r/CZmNDjsV-Y6BEBM/review';
+
+  readonly reviews: Review[] = [
+    {
+      name: 'José Antonio Luque',
+      initials: 'JA',
+      rating: 5,
+      timeAgo: 'Hace 3 meses',
+      text: 'Totalmente recomendable si estás pensando prepararte las oposiciones de Educación Física. Un temario muy completo y actualizado, gran cercanía por parte de todo el equipo de profesionales, seguimiento continuo de la programación y unidades didácticas, preparación de supuestos prácticos y defensas orales y actualización de todos los cambios de normativa presentes en cada oposición.',
+    },
+    {
+      name: 'Miguel Jiménez Osuna',
+      initials: 'MJ',
+      rating: 5,
+      timeAgo: 'Hace 3 meses',
+      text: 'Me llamo Miguel Ángel Jiménez Osuna y saqué mi plaza en 2022. Quiero agradecer a la academia por el gran apoyo que me dió durante la preparación de las oposiciones de Magisterio. Gracias a su organización, el material tan completo y el acompañamiento constante, he conseguido aprobar a la primera. Destaco especialmente la cercanía y profesionalidad del equipo (Juande, Álvaro y Fran) siempre dispuestos a resolver dudas y a motivarnos en los momentos más difíciles. Sin duda, ha sido una experiencia muy positiva y recomiendo esta academia a cualquiera que quiera preparar las oposiciones de Educación Física con garantías.',
+    },
+    {
+      name: 'Laura Piedra Baena',
+      initials: 'LP',
+      rating: 5,
+      timeAgo: 'Hace 2 meses',
+      text: 'Soy Laura y me saqué la plaza en 2024. Desde el primer momento confié en ellos para ese proceso. Temarios completos y actualizados, normativa vigente, material extra para que puedas ampliar conocimiento y contenidos, resolución de supuestos prácticos semanales, programación individualizada y preparación y exposición del oral semanalmente. Hacen un gran trabajo para atender las necesidades de cada uno/a: correcciones de supuestos, revisión de programaciones, explicaciones... mostrando siempre profesionalidad, cercanía y disponibilidad en cualquier momento del día, posibilitando que llegues a la oposición lo mejor preparado/a posible, con confianza y seguridad.',
+    },
+  ];
+
+  readonly activeReviewIndex = signal(0);
+  readonly isReviewExpanded = signal(false);
+
+  readonly averageRating =
+    this.reviews.reduce((sum, review) => sum + review.rating, 0) / this.reviews.length;
+
+  nextReview(): void {
+    this.activeReviewIndex.update((i) => (i + 1) % this.reviews.length);
+    this.isReviewExpanded.set(false);
+  }
+
+  prevReview(): void {
+    this.activeReviewIndex.update((i) => (i - 1 + this.reviews.length) % this.reviews.length);
+    this.isReviewExpanded.set(false);
+  }
+
+  goToReview(index: number): void {
+    this.activeReviewIndex.set(index);
+    this.isReviewExpanded.set(false);
+  }
+
+  toggleReviewExpanded(): void {
+    this.isReviewExpanded.update((expanded) => !expanded);
+  }
 }
