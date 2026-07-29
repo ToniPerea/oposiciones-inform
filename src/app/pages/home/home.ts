@@ -34,7 +34,7 @@ export class Home {
   constructor() {
     inject(SeoService).set({
       title: 'Oposiciones Educación Física Primaria y Secundaria | EDUCOEF Córdoba',
-      description: 'Academia de oposiciones de EF para la Junta de Andalucía, para Primaria y Secundaria. Preparación presencial en Córdoba y online. Más de 15 años formando profesores.',
+      description: 'Academia de oposiciones de EF en Andalucía, para Primaria y Secundaria. Preparación presencial en Córdoba y online. Más de 15 años formando profesores.',
       canonical: 'https://educoef.com/',
     });
   }
