@@ -31,8 +31,8 @@ interface TeamMember {
 export class About {
   constructor() {
     inject(SeoService).set({
-      title: 'Quiénes Somos | Academia Oposiciones EF Córdoba Andalucía | EDUCOEF',
-      description: 'Equipo de preparadores especializados en oposiciones de EF para Andalucía. Profesores universitarios y docentes activos con metodología probada en Córdoba.',
+      title: 'Quiénes Somos | Academia Oposiciones EF Primaria y Secundaria | EDUCOEF',
+      description: 'Equipo de preparadores especializados en oposiciones de EF para Primaria y Secundaria en Andalucía. Profesores universitarios y docentes activos con metodología probada en Córdoba.',
       canonical: 'https://educoef.com/nosotros',
     });
   }

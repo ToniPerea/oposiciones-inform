@@ -44,8 +44,8 @@ export class Plans implements OnInit, OnDestroy {
 
   constructor() {
     inject(SeoService).set({
-      title: 'Planes de Preparación | Oposiciones EF Andalucía — EDUCOEF Córdoba',
-      description: 'Plan Materiales, Plus y Premium para oposiciones de EF en Andalucía. Presencial en Córdoba u online. Plazas limitadas para Plan Premium.',
+      title: 'Planes de Preparación | Oposiciones EF Primaria y Secundaria — EDUCOEF',
+      description: 'Plan Materiales, Plus y Premium para oposiciones de EF en Andalucía, para Primaria y Secundaria. Presencial en Córdoba u online. Plazas limitadas para Plan Premium.',
       canonical: 'https://educoef.com/planes',
     });
   }
@@ -138,8 +138,8 @@ export class Plans implements OnInit, OnDestroy {
   readonly includedItems: IncludedItem[] = [
     {
       icon: 'book',
-      title: 'Temario Actualizado (25 temas)',
-      description: 'Los 25 temas completos, revisados y actualizados con la normativa vigente.',
+      title: 'Temario Actualizado',
+      description: 'Temario completo, revisado y actualizado con la normativa vigente de Primaria y Secundaria.',
     },
     {
       icon: 'clipboard',
@@ -203,6 +203,11 @@ export class Plans implements OnInit, OnDestroy {
       question: '¿Las clases quedan grabadas?',
       answer:
         'Sí, todas las clases en directo quedan grabadas y disponibles en la plataforma durante tu período de matriculación.',
+    },
+    {
+      question: '¿Preparáis oposiciones de Primaria y de Secundaria?',
+      answer:
+        'Sí, nuestros planes cubren tanto el Cuerpo de Maestros de Primaria como el Cuerpo de Profesores de Secundaria en la especialidad de Educación Física.',
     },
   ];
 

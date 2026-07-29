@@ -25,8 +25,8 @@ interface Stat {
 export class Home {
   constructor() {
     inject(SeoService).set({
-      title: 'Academia Oposiciones Educación Física Córdoba | EDUCOEF Andalucía',
-      description: 'Academia de oposiciones de EF para la Junta de Andalucía. Preparación presencial en Córdoba y online. Más de 15 años formando profesores.',
+      title: 'Oposiciones Educación Física Primaria y Secundaria | EDUCOEF Córdoba',
+      description: 'Academia de oposiciones de EF para la Junta de Andalucía, para Primaria y Secundaria. Preparación presencial en Córdoba y online. Más de 15 años formando profesores.',
       canonical: 'https://educoef.com/',
     });
   }
