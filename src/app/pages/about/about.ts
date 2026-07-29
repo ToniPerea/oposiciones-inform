@@ -90,7 +90,7 @@ export class About {
       name: 'Juan de Dios Benítez Sillero',
       photo: 'assets/team/juan-de-dios.png',
       role: 'Profesor Universitario',
-      description: 'Antiguo Docente funcionario de la Junta de Andalucía con amplia trayectoria en la preparación de oposiciones.',
+      description: 'Antiguo Docente funcionario de Andalucía con amplia trayectoria en la preparación de oposiciones.',
     },
     {
       name: 'Álvaro Morente Montero',
