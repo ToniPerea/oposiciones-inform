@@ -39,8 +39,6 @@ export class Footer {
   ];
 
   protected readonly socialLinks: SocialLink[] = [
-    { name: 'Instagram', url: 'https://instagram.com' },
-    { name: 'Facebook', url: 'https://facebook.com' },
-    { name: 'YouTube', url: 'https://youtube.com' },
+    { name: 'Instagram', url: 'https://www.instagram.com/educoef/' },
   ];
 }

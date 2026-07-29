@@ -73,6 +73,10 @@ body {
   animation: 300ms ease-out slide-up-fade-in;
 }
 
+.animate-slide-up-fade-in {
+  animation: 300ms ease-out slide-up-fade-in;
+}
+
 /* Scroll-reveal animations */
 .scroll-animate {
   opacity: 0;
