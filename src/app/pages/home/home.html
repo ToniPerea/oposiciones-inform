@@ -190,7 +190,13 @@
       </div>
     </div>
 
-    <div class="relative">
+    <div
+      class="relative"
+      (mouseenter)="pauseAutoplay()"
+      (mouseleave)="resumeAutoplay()"
+      (touchstart)="onTouchStart($event)"
+      (touchend)="onTouchEnd($event)"
+    >
       <!-- Prev button -->
       <button
         type="button"
@@ -203,36 +209,50 @@
         </svg>
       </button>
 
-      <!-- Active review card -->
-      @let review = reviews[activeReviewIndex()];
-      <div class="bg-gray-50 rounded-2xl p-8 sm:p-10 text-center flex flex-col items-center justify-center">
-        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-700 font-bold mb-4">
-          {{ review.initials }}
-        </div>
-        <p class="font-semibold text-gray-900">{{ review.name }}</p>
-        <div class="flex text-amber-400 mt-2 mb-1">
-          @for (star of [1, 2, 3, 4, 5]; track star) {
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385c.117.489-.417.877-.842.6l-4.725-3.03a.563.563 0 00-.61 0l-4.725 3.03c-.425.276-.96-.113-.842-.6l1.285-5.385a.563.563 0 00-.182-.557l-4.204-3.602c-.38-.325-.178-.948.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-            </svg>
+      <!-- Sliding review track -->
+      <div class="overflow-hidden rounded-2xl">
+        <div
+          class="flex transition-transform duration-500 ease-in-out"
+          [style.width.%]="reviews.length * 100"
+          [style.transform]="'translateX(-' + (activeReviewIndex() * (100 / reviews.length)) + '%)'"
+        >
+          @for (review of reviews; track review.name; let i = $index) {
+            <div
+              class="bg-gray-50 p-8 sm:p-10 text-center flex flex-col items-center justify-center shrink-0"
+              [style.width.%]="100 / reviews.length"
+              [attr.aria-hidden]="i !== activeReviewIndex() ? 'true' : null"
+              [attr.inert]="i !== activeReviewIndex() ? '' : null"
+            >
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-700 font-bold mb-4">
+                {{ review.initials }}
+              </div>
+              <p class="font-semibold text-gray-900">{{ review.name }}</p>
+              <div class="flex text-amber-400 mt-2 mb-1">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385c.117.489-.417.877-.842.6l-4.725-3.03a.563.563 0 00-.61 0l-4.725 3.03c-.425.276-.96-.113-.842-.6l1.285-5.385a.563.563 0 00-.182-.557l-4.204-3.602c-.38-.325-.178-.948.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                  </svg>
+                }
+              </div>
+              <p class="text-xs text-gray-400 mb-4">{{ review.timeAgo }}</p>
+              <p
+                class="text-gray-600 max-w-xl"
+                [class.line-clamp-4]="review.text.length > 220 && !(i === activeReviewIndex() && isReviewExpanded())"
+              >
+                {{ review.text }}
+              </p>
+              @if (review.text.length > 220) {
+                <button
+                  type="button"
+                  (click)="toggleReviewExpanded()"
+                  class="mt-3 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
+                >
+                  {{ i === activeReviewIndex() && isReviewExpanded() ? 'Leer menos' : 'Leer más' }}
+                </button>
+              }
+            </div>
           }
         </div>
-        <p class="text-xs text-gray-400 mb-4">{{ review.timeAgo }}</p>
-        <p
-          class="text-gray-600 max-w-xl"
-          [class.line-clamp-4]="review.text.length > 220 && !isReviewExpanded()"
-        >
-          {{ review.text }}
-        </p>
-        @if (review.text.length > 220) {
-          <button
-            type="button"
-            (click)="toggleReviewExpanded()"
-            class="mt-3 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
-          >
-            {{ isReviewExpanded() ? 'Leer menos' : 'Leer más' }}
-          </button>
-        }
       </div>
 
       <!-- Next button -->

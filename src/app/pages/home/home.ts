@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, PLATFORM_ID, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Hero } from '../../shared/hero/hero';
 import { ScrollAnimate } from '../../shared/scroll-animate/scroll-animate';
@@ -37,6 +38,18 @@ export class Home {
       description: 'Academia de oposiciones de EF en Andalucía, para Primaria y Secundaria. Preparación presencial en Córdoba y online. Más de 15 años formando profesores.',
       canonical: 'https://educoef.com/',
     });
+
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReducedMotion) {
+        const intervalId = setInterval(() => {
+          if (!this.isAutoplayPaused()) {
+            this.nextReview();
+          }
+        }, this.autoplayIntervalMs);
+        inject(DestroyRef).onDestroy(() => clearInterval(intervalId));
+      }
+    }
   }
 
   readonly features: Feature[] = [
@@ -96,10 +109,20 @@ export class Home {
       timeAgo: 'Hace 2 meses',
       text: 'Soy Laura y me saqué la plaza en 2024. Desde el primer momento confié en ellos para ese proceso. Temarios completos y actualizados, normativa vigente, material extra para que puedas ampliar conocimiento y contenidos, resolución de supuestos prácticos semanales, programación individualizada y preparación y exposición del oral semanalmente. Hacen un gran trabajo para atender las necesidades de cada uno/a: correcciones de supuestos, revisión de programaciones, explicaciones... mostrando siempre profesionalidad, cercanía y disponibilidad en cualquier momento del día, posibilitando que llegues a la oposición lo mejor preparado/a posible, con confianza y seguridad.',
     },
+    {
+      name: 'Antonio José Hidalgo',
+      initials: 'AJ',
+      rating: 5,
+      timeAgo: 'Hace 13 horas',
+      text: 'Como preparación de las oposiciones acabe encantado con la labor de Moises y Juan De Dios. Atención personalizada y cercana, consiguiendo que la relación vaya más allá del ámbito profesional. Siempre aportando consejos claros y directos para alcanzar el objetivo de la plaza en la preparación de las oposiciones de EF de Secundaria. El estudio y esfuerzo diario acompañado de personas con experiencia en este ámbito ha sido clave para alcanzar los objetivos. Muy recomendable.',
+    },
   ];
 
   readonly activeReviewIndex = signal(0);
   readonly isReviewExpanded = signal(false);
+  readonly isAutoplayPaused = signal(false);
+  private readonly autoplayIntervalMs = 7000;
+  private touchStartX = 0;
 
   readonly averageRating =
     this.reviews.reduce((sum, review) => sum + review.rating, 0) / this.reviews.length;
@@ -121,5 +144,28 @@ export class Home {
 
   toggleReviewExpanded(): void {
     this.isReviewExpanded.update((expanded) => !expanded);
+  }
+
+  pauseAutoplay(): void {
+    this.isAutoplayPaused.set(true);
+  }
+
+  resumeAutoplay(): void {
+    this.isAutoplayPaused.set(false);
+  }
+
+  onTouchStart(event: TouchEvent): void {
+    this.touchStartX = event.touches[0].clientX;
+    this.pauseAutoplay();
+  }
+
+  onTouchEnd(event: TouchEvent): void {
+    const swipeThreshold = 50;
+    const deltaX = event.changedTouches[0].clientX - this.touchStartX;
+    if (deltaX > swipeThreshold) {
+      this.prevReview();
+    } else if (deltaX < -swipeThreshold) {
+      this.nextReview();
+    }
   }
 }
