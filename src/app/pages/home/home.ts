@@ -20,7 +20,6 @@ interface Review {
   name: string;
   initials: string;
   rating: number;
-  timeAgo: string;
   text: string;
 }
 
@@ -92,29 +91,31 @@ export class Home {
       name: 'José Antonio Luque',
       initials: 'JA',
       rating: 5,
-      timeAgo: 'Hace 3 meses',
       text: 'Totalmente recomendable si estás pensando prepararte las oposiciones de Educación Física. Un temario muy completo y actualizado, gran cercanía por parte de todo el equipo de profesionales, seguimiento continuo de la programación y unidades didácticas, preparación de supuestos prácticos y defensas orales y actualización de todos los cambios de normativa presentes en cada oposición.',
     },
     {
       name: 'Miguel Jiménez Osuna',
       initials: 'MJ',
       rating: 5,
-      timeAgo: 'Hace 3 meses',
       text: 'Me llamo Miguel Ángel Jiménez Osuna y saqué mi plaza en 2022. Quiero agradecer a la academia por el gran apoyo que me dió durante la preparación de las oposiciones de Magisterio. Gracias a su organización, el material tan completo y el acompañamiento constante, he conseguido aprobar a la primera. Destaco especialmente la cercanía y profesionalidad del equipo (Juande, Álvaro y Fran) siempre dispuestos a resolver dudas y a motivarnos en los momentos más difíciles. Sin duda, ha sido una experiencia muy positiva y recomiendo esta academia a cualquiera que quiera preparar las oposiciones de Educación Física con garantías.',
     },
     {
       name: 'Laura Piedra Baena',
       initials: 'LP',
       rating: 5,
-      timeAgo: 'Hace 2 meses',
       text: 'Soy Laura y me saqué la plaza en 2024. Desde el primer momento confié en ellos para ese proceso. Temarios completos y actualizados, normativa vigente, material extra para que puedas ampliar conocimiento y contenidos, resolución de supuestos prácticos semanales, programación individualizada y preparación y exposición del oral semanalmente. Hacen un gran trabajo para atender las necesidades de cada uno/a: correcciones de supuestos, revisión de programaciones, explicaciones... mostrando siempre profesionalidad, cercanía y disponibilidad en cualquier momento del día, posibilitando que llegues a la oposición lo mejor preparado/a posible, con confianza y seguridad.',
     },
     {
       name: 'Antonio José Hidalgo',
       initials: 'AJ',
       rating: 5,
-      timeAgo: 'Hace 13 horas',
       text: 'Como preparación de las oposiciones acabe encantado con la labor de Moises y Juan De Dios. Atención personalizada y cercana, consiguiendo que la relación vaya más allá del ámbito profesional. Siempre aportando consejos claros y directos para alcanzar el objetivo de la plaza en la preparación de las oposiciones de EF de Secundaria. El estudio y esfuerzo diario acompañado de personas con experiencia en este ámbito ha sido clave para alcanzar los objetivos. Muy recomendable.',
+    },
+    {
+      name: 'Jose Carlos Malagon',
+      initials: 'JC',
+      rating: 5,
+      text: 'Buena preparación y atención en todo momento, fundamentalmente de cara a la exposición, que me ayudo a conseguir plaza sin tiempo de servicio.',
     },
   ];
 

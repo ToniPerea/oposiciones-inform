@@ -227,14 +227,13 @@
                 {{ review.initials }}
               </div>
               <p class="font-semibold text-gray-900">{{ review.name }}</p>
-              <div class="flex text-amber-400 mt-2 mb-1">
+              <div class="flex text-amber-400 mt-2 mb-4">
                 @for (star of [1, 2, 3, 4, 5]; track star) {
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385c.117.489-.417.877-.842.6l-4.725-3.03a.563.563 0 00-.61 0l-4.725 3.03c-.425.276-.96-.113-.842-.6l1.285-5.385a.563.563 0 00-.182-.557l-4.204-3.602c-.38-.325-.178-.948.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                   </svg>
                 }
               </div>
-              <p class="text-xs text-gray-400 mb-4">{{ review.timeAgo }}</p>
               <p
                 class="text-gray-600 max-w-xl"
                 [class.line-clamp-4]="review.text.length > 220 && !(i === activeReviewIndex() && isReviewExpanded())"
