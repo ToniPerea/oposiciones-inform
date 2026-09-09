@@ -39,6 +39,15 @@
             </span>
           }
 
+          <!-- Grupo presencial completo ribbon -->
+          @if (plan.presencialFull) {
+            <div class="absolute top-0 right-0 z-20 h-32 w-32 overflow-hidden rounded-tr-2xl">
+              <span class="absolute right-[-42px] top-[26px] block w-[175px] rotate-45 bg-red-600 py-1.5 text-center text-[11px] font-bold uppercase tracking-wider text-white shadow-lg">
+                Grupo completo
+              </span>
+            </div>
+          }
+
           <!-- Plan Name -->
           <h3 class="font-heading text-2xl font-bold text-gray-900">
             {{ plan.name }}
@@ -113,8 +122,17 @@
               </p>
             }
 
-            <!-- Plazas limitadas indicator (for plans without a red badge) -->
-            @if (plan.limitedSpots && plan.badge !== 'Plazas Limitadas') {
+            <!-- Grupo presencial completo notice -->
+            @if (plan.presencialFull) {
+              <div class="mb-4 flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mt-0.5 h-4 w-4 shrink-0 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-xs font-semibold text-amber-800">
+                  Grupo presencial completo. Sigue disponible la modalidad online en directo.
+                </span>
+              </div>
+            } @else if (plan.limitedSpots && plan.badge !== 'Plazas Limitadas') {
               <div class="mb-4 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2">
                 <span class="h-2 w-2 shrink-0 rounded-full bg-red-500"></span>
                 <span class="text-xs font-semibold text-red-700">Plazas limitadas — reserva la tuya</span>
