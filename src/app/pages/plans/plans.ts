@@ -16,7 +16,7 @@ interface Plan {
   featured: boolean;
   badge?: string;
   limitedSpots?: boolean;
-  presencialFull?: boolean;
+  presencialFullStage?: 'primaria' | 'secundaria';
   features: PlansFeature[];
   discount?: string; // alumni discount note e.g. "Exalumnos: 129 € (−20 €)"
   ctaText: string;
@@ -124,7 +124,7 @@ export class Plans implements OnInit, OnDestroy {
       featured: true,
       badge: 'Todo incluido',
       limitedSpots: true,
-      presencialFull: true,
+      presencialFullStage: 'primaria',
       features: [
         { text: 'Todo lo del Plan Plus' },
         { text: 'Simulacros de temas y supuestos prácticos' },
