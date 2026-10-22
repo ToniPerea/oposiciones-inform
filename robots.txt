@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://educoef.com/sitemap.xml
