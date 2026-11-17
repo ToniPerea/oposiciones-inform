@@ -9,6 +9,7 @@ interface NavLink {
 interface ContactItem {
   icon: string;
   text: string;
+  href?: string;
 }
 
 interface SocialLink {
@@ -33,9 +34,9 @@ export class Footer {
   ];
 
   protected readonly contactItems: ContactItem[] = [
-    { icon: 'phone', text: '+34 652 249 669' },
-    { icon: 'email', text: 'info@educoef.com' },
-    { icon: 'address', text: 'Calle Alonso El Sabio, 26, Córdoba, Andalucía' },
+    { icon: 'phone', text: '+34 652 249 669', href: 'tel:+34652249669' },
+    { icon: 'email', text: 'info@educoef.com', href: 'mailto:info@educoef.com' },
+    { icon: 'address', text: 'Calle Alonso El Sabio, 26, 14001 Córdoba, Andalucía' },
   ];
 
   protected readonly socialLinks: SocialLink[] = [

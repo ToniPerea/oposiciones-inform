@@ -10,7 +10,7 @@ export class AvisoLegal {
     inject(SeoService).set({
       title: 'Aviso Legal — EDUCOEF',
       description: 'Aviso legal de EDUCOEF, academia de oposiciones de Educación Física en Córdoba.',
-      canonical: 'https://educoef.com/aviso-legal',
+      canonical: 'https://educoef.com/aviso-legal/',
       noindex: true,
     });
   }

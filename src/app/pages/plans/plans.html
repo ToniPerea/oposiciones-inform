@@ -1,6 +1,6 @@
 <!-- Hero Section -->
 <app-hero
-  title="Nuestros Planes"
+  title="Planes y precios para oposiciones de Educación Física"
   subtitle="Preparación exclusiva para las oposiciones de Primaria y Secundaria de Andalucía · Online y presencial en Córdoba"
 />
 
@@ -175,6 +175,63 @@
         </div>
       }
     </div>
+  </div>
+</section>
+
+<!-- Comparison Section -->
+<section class="bg-gray-50 py-16 md:py-24">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <h2 appScrollAnimate class="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+        Compara los Planes
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+        El Plan Materiales es para estudiar por tu cuenta con todo el material. El Plan Plus añade la
+        plataforma, la comunidad y la corrección de tu programación. El Plan Premium incluye además
+        simulacros, defensa oral, seguimiento personalizado y clases en directo, con plazas limitadas.
+      </p>
+    </div>
+
+    <div class="overflow-x-auto rounded-xl bg-white shadow-md">
+      <table class="w-full min-w-[34rem] text-left text-sm">
+        <caption class="sr-only">Comparativa de los planes Materiales, Plus y Premium</caption>
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th scope="col" class="px-4 py-4 font-semibold text-gray-900">Qué incluye</th>
+            @for (plan of plans; track plan.name) {
+              <th scope="col" class="px-4 py-4 text-center font-semibold text-gray-900">
+                <span class="block">{{ plan.name }}</span>
+                <span class="block text-primary-600">
+                  {{ plan.price }}€{{ plan.priceType === 'monthly' ? '/mes' : ' pago único' }}
+                </span>
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          @for (row of comparisonRows; track row.label) {
+            <tr>
+              <th scope="row" class="px-4 py-3 font-medium text-gray-700">{{ row.label }}</th>
+              @for (included of row.included; track $index) {
+                <td class="px-4 py-3 text-center">
+                  @if (included) {
+                    <span class="font-bold text-secondary-600" aria-hidden="true">✓</span>
+                    <span class="sr-only">Incluido</span>
+                  } @else {
+                    <span class="text-gray-300" aria-hidden="true">—</span>
+                    <span class="sr-only">No incluido</span>
+                  }
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-4 text-center text-sm text-gray-500">
+      Las correcciones y exposiciones de los planes Materiales y Plus se contratan aparte, según necesidad.
+    </p>
   </div>
 </section>
 

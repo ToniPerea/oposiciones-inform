@@ -3,33 +3,33 @@
 
     @if (!showCustomize()) {
       <!-- Banner principal -->
-      <div class="bg-gray-900 text-white px-4 py-4">
+      <div class="bg-gray-900 text-white px-4 py-3 md:py-4">
         <div class="max-w-6xl mx-auto">
-          <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
-            <p class="flex-1 text-sm text-gray-300">
+          <div class="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4">
+            <p class="flex-1 text-xs md:text-sm text-gray-300">
               Usamos <strong class="text-white">cookies necesarias</strong> para el funcionamiento del sitio y,
               con tu consentimiento, <strong class="text-white">cookies analíticas</strong> (Google Analytics)
               para mejorar nuestros contenidos.
               <a routerLink="/politica-cookies" class="underline text-primary-300 hover:text-primary-200 ml-1">
-                Más información
+                Más información sobre cookies
               </a>
             </p>
-            <div class="flex flex-wrap items-center gap-2 shrink-0">
+            <div class="flex w-full md:w-auto items-center gap-2 shrink-0">
               <button
                 (click)="openCustomize()"
-                class="text-sm text-gray-400 hover:text-white underline px-3 py-2 transition-colors cursor-pointer"
+                class="text-xs md:text-sm text-gray-400 hover:text-white underline px-1 md:px-3 py-2 transition-colors cursor-pointer"
               >
                 Personalizar
               </button>
               <button
                 (click)="rejectAll()"
-                class="bg-gray-700 hover:bg-gray-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer"
+                class="flex-1 md:flex-none bg-gray-700 hover:bg-gray-600 text-white text-xs md:text-sm font-semibold px-3 md:px-4 py-2 rounded-lg transition-colors cursor-pointer"
               >
                 Solo necesarias
               </button>
               <button
                 (click)="acceptAll()"
-                class="bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer"
+                class="flex-1 md:flex-none bg-primary-600 hover:bg-primary-700 text-white text-xs md:text-sm font-semibold px-3 md:px-4 py-2 rounded-lg transition-colors cursor-pointer"
               >
                 Aceptar todas
               </button>

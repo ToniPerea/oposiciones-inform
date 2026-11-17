@@ -47,16 +47,56 @@ export class Plans implements OnInit, OnDestroy {
     inject(SeoService).set({
       title: 'Planes de Preparación | Oposiciones EF Primaria y Secundaria — EDUCOEF',
       description: 'Plan Materiales, Plus y Premium para oposiciones de EF en Andalucía, para Primaria y Secundaria. Presencial en Córdoba u online. Plazas limitadas para Plan Premium.',
-      canonical: 'https://educoef.com/planes',
+      canonical: 'https://educoef.com/planes/',
     });
   }
 
   ngOnInit(): void {
     this.injectFaqSchema();
+    this.injectPlansSchema();
   }
 
   ngOnDestroy(): void {
     this.document.getElementById('faq-schema')?.remove();
+    this.document.getElementById('plans-schema')?.remove();
+  }
+
+  private injectPlansSchema(): void {
+    if (this.document.getElementById('plans-schema')) return;
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': 'https://educoef.com/planes/#service',
+      name: 'Preparación de oposiciones de Educación Física (Primaria y Secundaria)',
+      serviceType: 'Preparación de oposiciones de Educación Física',
+      provider: { '@id': 'https://educoef.com/#organization' },
+      areaServed: { '@type': 'AdministrativeArea', name: 'Andalucía' },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Planes de preparación',
+        itemListElement: this.plans.map(plan => ({
+          '@type': 'Offer',
+          name: plan.name,
+          url: 'https://educoef.com/planes/',
+          priceCurrency: 'EUR',
+          price: plan.price,
+          priceSpecification:
+            plan.priceType === 'monthly'
+              ? {
+                  '@type': 'UnitPriceSpecification',
+                  price: plan.price,
+                  priceCurrency: 'EUR',
+                  referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
+                }
+              : { '@type': 'PriceSpecification', price: plan.price, priceCurrency: 'EUR' },
+        })),
+      },
+    };
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'plans-schema';
+    script.text = JSON.stringify(schema);
+    this.document.head.appendChild(script);
   }
 
   private injectFaqSchema(): void {
@@ -138,6 +178,22 @@ export class Plans implements OnInit, OnDestroy {
     },
   ];
 
+  /** Orden de columnas: Plan Materiales, Plan Plus, Plan Premium */
+  readonly comparisonRows: { label: string; included: [boolean, boolean, boolean] }[] = [
+    { label: 'Temario completo', included: [true, true, true] },
+    { label: 'Supuestos prácticos resueltos', included: [true, true, true] },
+    { label: 'Resúmenes y esquemas de cada tema', included: [true, true, true] },
+    { label: 'Plataforma con clases en diferido', included: [false, true, true] },
+    { label: 'Foro de preguntas en comunidad', included: [false, true, true] },
+    { label: 'Organización del estudio de los temas', included: [false, true, true] },
+    { label: 'Temas y criterios actualizados durante el año', included: [false, true, true] },
+    { label: 'Corrección de programación y situaciones de aprendizaje', included: [false, true, true] },
+    { label: 'Simulacros de temas y supuestos prácticos', included: [false, false, true] },
+    { label: 'Preparación y simulacro de la defensa oral', included: [false, false, true] },
+    { label: 'Seguimiento personalizado', included: [false, false, true] },
+    { label: 'Clases online en directo o presenciales en Córdoba', included: [false, false, true] },
+  ];
+
   readonly includedItems: IncludedItem[] = [
     {
       icon: 'book',
@@ -188,29 +244,44 @@ export class Plans implements OnInit, OnDestroy {
 
   readonly faqItems: FaqItem[] = [
     {
+      question: '¿Cuánto cuesta preparar las oposiciones de Educación Física con EDUCOEF?',
+      answer:
+        'Tenemos tres planes: el Plan Materiales cuesta 500 € en un único pago, el Plan Plus 100 € al mes y el Plan Premium 160 € al mes. Las correcciones y exposiciones del Plan Materiales y del Plan Plus se contratan aparte, según tus necesidades. Escríbenos y te ayudamos a elegir el plan que mejor encaja contigo.',
+    },
+    {
+      question: '¿Qué diferencia hay entre los tres planes?',
+      answer:
+        'El Plan Materiales incluye el temario completo, los supuestos prácticos resueltos y los esquemas de cada tema. El Plan Plus añade la plataforma con clases en diferido, el foro de comunidad y la corrección de programación y situaciones de aprendizaje. El Plan Premium suma simulacros, preparación de la defensa oral, seguimiento personalizado y clases en directo online o presenciales en Córdoba.',
+    },
+    {
+      question: '¿Puedo prepararme online o solo presencial?',
+      answer:
+        'Puedes hacerlo de las dos formas. La plataforma online está disponible para toda Andalucía y, con el Plan Premium, también ofrecemos clases en directo online o presenciales en nuestra sede de Calle Alonso El Sabio, 26, en Córdoba.',
+    },
+    {
       question: '¿Cuándo comienzan los cursos?',
       answer:
-        'Ofrecemos incorporación continua. Puedes comenzar en cualquier momento del año y adaptamos el plan a tu fecha de examen.',
+        'Ofrecemos incorporación continua, así que puedes empezar en cualquier momento del año. Adaptamos el plan a tu fecha de examen y a tu punto de partida, tanto si te presentas a Primaria como a Secundaria.',
     },
     {
       question: '¿Puedo cambiar de modalidad?',
       answer:
-        'Sí, puedes cambiar entre modalidades en cualquier momento.',
+        'Sí, puedes cambiar entre modalidades en cualquier momento, por ejemplo de online a presencial en Córdoba si tu plan lo incluye. Escríbenos o llámanos y lo organizamos contigo.',
     },
     {
       question: '¿Hay facilidades de pago?',
       answer:
-        'Sí, puedes contactarnos para más información sobre las opciones de pago disponibles.',
+        'El Plan Materiales es un pago único de 500 € y los planes Plus y Premium se pagan mensualmente (100 € y 160 € al mes), sin necesidad de abonar toda la preparación de una vez. Si necesitas otra fórmula de pago, contáctanos y lo valoramos contigo.',
     },
     {
       question: '¿Las clases quedan grabadas?',
       answer:
-        'Sí, todas las clases en directo quedan grabadas y disponibles en la plataforma durante tu período de matriculación.',
+        'Sí, todas las clases en directo quedan grabadas y disponibles en la plataforma durante tu período de matriculación, para que puedas verlas en diferido y repasarlas cuando quieras.',
     },
     {
       question: '¿Preparáis oposiciones de Primaria y de Secundaria?',
       answer:
-        'Sí, nuestros planes cubren tanto el Cuerpo de Maestros de Primaria como el Cuerpo de Profesores de Secundaria en la especialidad de Educación Física.',
+        'Sí. Nuestros planes cubren tanto el Cuerpo de Maestros de Educación Primaria como el Cuerpo de Profesores de Educación Secundaria en la especialidad de Educación Física, con el temario actualizado de cada cuerpo. Nuestro equipo combina profesores universitarios, docentes en activo y miembros de tribunal.',
     },
   ];
 

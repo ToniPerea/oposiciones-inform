@@ -28,7 +28,7 @@ export class Contact {
     inject(SeoService).set({
       title: 'Contacto | Academia Oposiciones Educación Física Córdoba | EDUCOEF',
       description: 'Contacta con EDUCOEF, academia de oposiciones de EF en Córdoba. Preparación presencial y online para toda Andalucía. Respuesta en menos de 24h.',
-      canonical: 'https://educoef.com/contacto',
+      canonical: 'https://educoef.com/contacto/',
     });
   }
 
@@ -76,7 +76,7 @@ export class Contact {
     {
       icon: 'schedule',
       label: 'Horario',
-      value: 'Lunes a Viernes: 9:00 - 20:00 / Sábados: 10:00 - 14:00',
+      value: 'Lunes a Viernes: 9:00 - 20:00',
     },
   ];
 

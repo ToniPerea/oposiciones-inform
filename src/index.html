@@ -12,7 +12,7 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://educoef.com" />
+  <meta property="og:url" content="https://educoef.com/" />
   <meta property="og:site_name" content="EDUCOEF" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:title" content="EDUCOEF — Academia Oposiciones Educación Física Andalucía" />
@@ -51,25 +51,64 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": ["EducationalOrganization", "LocalBusiness"],
-    "name": "EDUCOEF — Academia Oposiciones Educación Física",
-    "description": "Preparación de oposiciones de profesor de Educación Física para Andalucía. Clases presenciales en Córdoba y online para toda Andalucía.",
-    "url": "https://educoef.com",
-    "telephone": "+34652249669",
-    "email": "info@educoef.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Calle Alonso El Sabio, 26",
-      "addressLocality": "Córdoba",
-      "postalCode": "14001",
-      "addressRegion": "Andalucía",
-      "addressCountry": "ES"
-    },
-    "areaServed": [
-      { "@type": "State", "name": "Andalucía" }
-    ],
-    "serviceType": "Preparación de oposiciones de Educación Física para Primaria y Secundaria",
-    "knowsAbout": ["Oposiciones Educación Física", "Primaria Andalucía", "Secundaria Andalucía", "Cuerpo de Maestros", "Preparación oposiciones docentes", "EF Córdoba"]
+    "@graph": [
+      {
+        "@type": ["EducationalOrganization", "LocalBusiness"],
+        "@id": "https://educoef.com/#organization",
+        "name": "EDUCOEF",
+        "alternateName": "EDUCOEF — Academia Oposiciones Educación Física",
+        "description": "Academia de oposiciones de Educación Física para Primaria (Cuerpo de Maestros) y Secundaria en Andalucía. Clases presenciales en Córdoba y online para toda Andalucía.",
+        "url": "https://educoef.com/",
+        "logo": "https://educoef.com/logo.png",
+        "image": "https://educoef.com/logo.png",
+        "telephone": "+34652249669",
+        "email": "info@educoef.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Calle Alonso El Sabio, 26",
+          "addressLocality": "Córdoba",
+          "postalCode": "14001",
+          "addressRegion": "Andalucía",
+          "addressCountry": "ES"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 37.8948126,
+          "longitude": -4.7749106
+        },
+        "hasMap": "https://www.google.com/maps?q=37.8948126,-4.7749106",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "20:00"
+          }
+        ],
+        "areaServed": [
+          { "@type": "City", "name": "Córdoba" },
+          { "@type": "AdministrativeArea", "name": "Andalucía" }
+        ],
+        "sameAs": ["https://www.instagram.com/educoef/"],
+        "knowsAbout": ["Oposiciones Educación Física", "Primaria Andalucía", "Secundaria Andalucía", "Cuerpo de Maestros", "Preparación oposiciones docentes", "EF Córdoba"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://educoef.com/#website",
+        "url": "https://educoef.com/",
+        "name": "EDUCOEF",
+        "inLanguage": "es",
+        "publisher": { "@id": "https://educoef.com/#organization" }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://educoef.com/#service",
+        "serviceType": "Preparación de oposiciones de Educación Física para Primaria y Secundaria",
+        "provider": { "@id": "https://educoef.com/#organization" },
+        "areaServed": { "@type": "AdministrativeArea", "name": "Andalucía" },
+        "availableLanguage": "es"
+      }
+    ]
   }
   </script>
 </head>

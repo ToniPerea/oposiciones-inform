@@ -11,7 +11,7 @@ export class PoliticaCookies {
     inject(SeoService).set({
       title: 'Política de Cookies — EDUCOEF',
       description: 'Política de cookies de EDUCOEF. Información sobre las cookies que usamos y cómo gestionarlas.',
-      canonical: 'https://educoef.com/politica-cookies',
+      canonical: 'https://educoef.com/politica-cookies/',
       noindex: true,
     });
   }

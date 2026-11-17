@@ -10,7 +10,7 @@ export class PoliticaPrivacidad {
     inject(SeoService).set({
       title: 'Política de Privacidad — EDUCOEF',
       description: 'Política de privacidad de EDUCOEF, academia de oposiciones de Educación Física en Córdoba.',
-      canonical: 'https://educoef.com/politica-privacidad',
+      canonical: 'https://educoef.com/politica-privacidad/',
       noindex: true,
     });
   }

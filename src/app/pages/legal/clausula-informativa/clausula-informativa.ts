@@ -10,7 +10,7 @@ export class ClausulaInformativa {
     inject(SeoService).set({
       title: 'Cláusula Informativa — EDUCOEF',
       description: 'Cláusula informativa de EDUCOEF, academia de oposiciones de Educación Física en Córdoba.',
-      canonical: 'https://educoef.com/clausula-informativa',
+      canonical: 'https://educoef.com/clausula-informativa/',
       noindex: true,
     });
   }

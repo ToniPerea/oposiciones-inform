@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, DOCUMENT } from '@angular/core';
 import { Hero } from '../../shared/hero/hero';
 import { ScrollAnimate } from '../../shared/scroll-animate/scroll-animate';
 import { SeoService } from '../../shared/seo/seo';
@@ -28,27 +28,29 @@ interface TeamMember {
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About {
+export class About implements OnInit, OnDestroy {
+  private readonly document = inject(DOCUMENT);
+
   constructor() {
     inject(SeoService).set({
       title: 'Quiénes Somos | Academia Oposiciones EF Primaria y Secundaria | EDUCOEF',
       description: 'Equipo de preparadores especializados en oposiciones de EF para Primaria y Secundaria en Andalucía. Profesores universitarios y docentes activos con metodología probada en Córdoba.',
-      canonical: 'https://educoef.com/nosotros',
+      canonical: 'https://educoef.com/nosotros/',
     });
   }
 
   readonly values: Value[] = [
     {
       title: 'Excelencia',
-      description: 'Buscamos la máxima calidad en todo lo que hacemos.',
+      description: 'Un equipo formado por profesores universitarios, docentes en activo y miembros de tribunal de oposiciones.',
     },
     {
       title: 'Compromiso',
-      description: 'Nos comprometemos con el éxito de cada alumno.',
+      description: 'Seguimiento personalizado, con informe de tus notas y tu progreso hasta el día del examen.',
     },
     {
       title: 'Innovación',
-      description: 'Actualizamos constantemente nuestra metodología.',
+      description: 'Plataforma online con clases en diferido, audios e infografías, y temas y criterios actualizados durante el año.',
     },
   ];
 
@@ -111,4 +113,41 @@ export class About {
       description: 'Profesor de Educación Secundaria con más de 20 años de experiencia. Tribunal de oposiciones y experiencia como preparador durante más de 10 años.',
     },
   ];
+
+  ngOnInit(): void {
+    this.injectTeamSchema();
+  }
+
+  ngOnDestroy(): void {
+    this.document.getElementById('team-schema')?.remove();
+  }
+
+  private injectTeamSchema(): void {
+    if (this.document.getElementById('team-schema')) return;
+    const schema = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'AboutPage',
+          '@id': 'https://educoef.com/nosotros/#page',
+          url: 'https://educoef.com/nosotros/',
+          name: 'Quiénes somos | EDUCOEF',
+          about: { '@id': 'https://educoef.com/#organization' },
+        },
+        ...this.teamMembers.map(member => ({
+          '@type': 'Person',
+          name: member.name,
+          jobTitle: member.role,
+          description: member.description,
+          ...(member.photo ? { image: `https://educoef.com/${member.photo}` } : {}),
+          worksFor: { '@id': 'https://educoef.com/#organization' },
+        })),
+      ],
+    };
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'team-schema';
+    script.text = JSON.stringify(schema);
+    this.document.head.appendChild(script);
+  }
 }
